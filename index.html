@@ -1,0 +1,91 @@
+<!doctype html>
+<!JAVASCRIPT CALCULATOR>
+
+<html lang="en">
+<head>
+    <title><!-- Calculator javascript --></title>
+    
+<script language='javascript' type='text/javascript'>
+function calculation()
+{
+    a=Number(document.calculator.number1.value);
+    c=a/1950;
+    document.calculator.total.value=c;
+    
+    a=Number(document.calculator.number1.value);
+    c=a*1950;
+    document.calculator.total2.value=c;
+}
+      
+</script>
+    
+</head>
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+<body>
+    <!-- START BODY -->
+    <h1>Javascript calculator</h1>
+    <p>Calculator made in javascript</p>
+    
+    <div class="form">
+        <form name="calculator">
+    <h2>calculator 
+    </h2>
+        
+        <!-- Here user will enter the number. --> 
+         <input name="number1" type="text" value="standard value" STYLE="border: inset;" /> 
+         
+        <!-- Here user will get out number. -->
+        numberone: <input name="total" type="text"  STYLE="background-color: #000000; color: white; border: hidden;"/>
+        
+        <!-- Here user will get out other number. -->
+        numbertwo: <input name="total2" type="text"  STYLE="background-color: #000000; color: white; border: hidden;"/> 
+
+        <input onclick="javascript:calculation();" type="button" value="Enter" id="submit"  />
+    </div>
+
+</form>
+    
+</body>
+</html>
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+
+<style type="text/css">
+/* ###### CSS #########*/
+.form
+{
+    width: 150px;
+    background: #FFF;
+    padding:0px 30px 20px 30px;
+    box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    background-color: #D0D0D0 	;
+    border: outset;
+}
+
+.form input[type="button"]
+{
+    background: #009900 ;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    margin-top:4px;
+}
+
+.form input[type="button"]:hover
+{
+    background: #006600 ;
+}
+
+.form h2
+{
+    text-decoration: none;
+}
+</style>
+
+
+

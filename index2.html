@@ -1,0 +1,86 @@
+<html>
+<head>
+    <script language='javascript' type='text/javascript'>
+    function calculation()
+    {
+        if (remember.checked == 1)
+        {
+            a = Number(document.calc.number1.value);
+            nWidth = a * 480;
+            document.calc.total.value = nWidth;
+            nHeidht = a * 360;
+            document.calc.mndlonn.value = nHeidht;
+        }
+        else
+        {
+            a = Number(document.calc.number1.value);
+            nWidth = a * 640;
+            document.calc.total.value = nWidth;
+            nHeidht = a * 360;
+            document.calc.mndlonn.value = nHeidht;
+        }
+     }
+
+    </script>
+</head>
+<body>
+    <div class="form">
+    <!-- Opening a HTML Form. --> 
+        <form name="calc">
+            <h2>Calculator</h2>
+            
+            <!-- Here user will enter 1st number. -->
+            Aspect_Ratio: <input name="number1" type="text" /> 
+            
+            <!-- Here result will be displayed. --> 
+            Width: <input name="total" type="text" style="background-color: black; color: white;" />
+            
+            <!-- Here result will be displayed. --> 
+            Height: <input name="mndlonn" type="text" style="background-color: black; color: white;" />
+            
+            <!-- Here calculation will be played. --> 
+            <input onclick="javascript:calculation();" type="button" value="Calculate" />
+            4:3<input id="remember" name="remember" type="checkbox" />
+        </form>
+    </div>
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+<!-- ######################################################################### -->
+</body>
+
+<style type="text/css">
+/* ###### CSS #########*/
+.form
+{
+    width: 170px;
+    background: #FFF;
+    padding:0px 30px 20px 30px;
+    box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    background-color: #D0D0D0 	;
+    border: outset;
+}
+
+.form input[type="button"]
+{
+    background: #009900 ;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    margin-top:4px;
+}
+
+.form input[type="button"]:hover
+{
+    background: #006600 ;
+}
+
+.form h2
+{
+    text-decoration: none;
+}
+</style>
+
+
+</html>
