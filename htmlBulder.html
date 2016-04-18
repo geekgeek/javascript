@@ -1,0 +1,52 @@
+<html>
+<head>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type = "text/css"/>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  
+  <script>
+$(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
+</script>
+</head>
+<body>
+
+
+<h2>Demo of Code Universe</h2>
+
+
+<form Name="calc">
+
+
+<div class="form-group">
+<textarea name="message" rows="10" cols="30" placeholder="Input"></textarea>
+
+</div>
+<div class="form-group">
+<input class="btn btn-success" type=button value="Translate!" OnClick="sumValue()">
+</div>
+</form>
+
+
+
+<script>
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+</script>
+
+  
+  <div class="added">
+  
+  </div>
+</body>
+</html>
