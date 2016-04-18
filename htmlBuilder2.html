@@ -1,0 +1,47 @@
+<html>
+<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <style>
+          .added{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:300px;
+}
+      </style>
+</head>
+<body>
+<h2>CODE HTML ONLINE</h2>
+
+
+<form name="calc">
+
+
+<div class="form-group">
+<textarea name="message" rows="10" cols="100" placeholder="Input"></textarea>
+
+</div>
+<div class="form-group">
+<input class="btn btn-success" type="button" value="Generate HTML" onclick="sumValue()">
+</div>
+</form>
+
+
+
+<script>
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+</script>
+<div class="added">
+    
+</div>
+
+</body>
+</html>
