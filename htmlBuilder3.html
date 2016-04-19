@@ -1,0 +1,80 @@
+<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<style>
+.added{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:250px;
+}
+
+.mainBox{
+    font-family: "Verdana, Geneva, sans-serif;
+
+}
+
+textarea {
+  max-width: 99%;
+  background-color:white;
+  color:black;
+}
+
+</style>
+</head>
+
+<h2>CODE HTML</h2>
+
+
+<form name="calc">
+
+
+<div class="form-group">
+<textarea class="mainBox" name="message" rows="10" cols="120" placeholder="Type your html code here, and press the button Generate HTML."></textarea>
+
+</div>
+<div class="form-group">
+<input class="btn btn-success" type="button" value="Generate HTML" onclick="sumValue()">
+
+<input class="btn btn-success" type="button" value="Black" onclick="changeColorBlack()">
+
+<input class="btn btn-success" type="button" value="White" onclick="changeColorWhite()">
+</div>
+</form>
+
+
+
+<script>
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+
+//change color Black
+function changeColorBlack()
+{
+       
+$("textarea").css({"background-color": "black", "color": "white"});
+$(".added").css({"background-color": "black", "color": "white"});
+ 
+};
+
+//change color White
+function changeColorWhite()
+{
+       
+$("textarea").css({"background-color": "white", "color": "black"});
+$(".added").css({"background-color": "white", "color": "black"});
+ 
+};
+
+
+
+</script>
+<div class="added">
+</div>
