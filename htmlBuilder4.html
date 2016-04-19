@@ -1,0 +1,137 @@
+<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<style>
+.added{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:250px;
+}
+
+.notes{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:250px;
+  background-color:grey;
+}
+
+
+.mainBox{
+    font-family: "Verdana, Geneva, sans-serif;
+
+}
+
+textarea {
+  max-width: 99%;
+  background-color:white;
+  color:black;
+}
+
+</style>
+</head>
+
+<h2>CODE HTML</h2>
+
+
+<form name="calc">
+
+
+<div class="form-group">
+<textarea class="mainBox" name="message" rows="10" cols="120" placeholder="Type your html code here, and press the button Generate HTML."></textarea>
+
+</div>
+<div class="form-group">
+<input class="btn btn-success" type="button" value="Generate HTML" onclick="sumValue()">
+
+<input class="btn btn-success" type="button" value="Black" onclick="changeColorBlack()">
+
+<input class="btn btn-success" type="button" value="White" onclick="changeColorWhite()">
+
+<input class="btn btn-success" type="button" value="ShowHide" onclick="showHideMe()">
+
+<input class="btn btn-success" type="button" value="AddToNotes" onclick="addNote()">
+
+<input class="btn btn-success" type="button" value="deleteNotes" onclick="deleteNotes()">
+
+</div>
+</form>
+
+
+
+<script>
+
+//STARTUP FIRST:
+$( document ).ready(function() {
+  // Handler for .ready() called.
+  $(".notes").hide();
+});
+
+
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+
+//change color Black
+function changeColorBlack()
+{
+       
+$(".mainBox").css({"background-color": "black", "color": "white"});
+$(".added").css({"background-color": "black", "color": "white"});
+ 
+};
+
+//change color White
+function changeColorWhite()
+{
+       
+$(".mainBox").css({"background-color": "white", "color": "black"});
+$(".added").css({"background-color": "white", "color": "black"});
+ 
+};
+
+
+//Show hide output area
+function showHideMe()
+{
+       
+$(".added").toggle();
+$(".notes").toggle();
+ 
+};
+
+//add note area
+function addNote()
+{
+       
+    var textVal = calc.message.value;           
+    $("ol").append("<li>" + textVal + "</li>");
+ 
+};
+
+
+//delete notes in area
+function deleteNotes()
+{
+       
+    var textVal = calc.message.value;           
+    $("ol").html("");
+ 
+};
+
+</script>
+<div class="added">
+</div>
+
+<div class="notes">
+<ol>
+
+</ol>
+</div>
