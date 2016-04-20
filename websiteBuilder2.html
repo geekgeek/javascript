@@ -1,0 +1,198 @@
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type = "text/css"/>
+
+<style>
+.mainBox{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:auto;
+  max-width:100%;
+}
+
+.mainBox{
+    font-family:"Verdana, Geneva, sans-serif";
+}
+textarea {
+  max-width: 99%;
+  background-color:white;
+  color:black;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+    </br></br>
+    <h2>Coder</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="calc">
+
+                <div class="form-group">
+                     <input class="btn btn-success" type="button" value="Links" onclick="addCodeSnippet2()">
+                     <input class="btn btn-success" type="button" value="Jumbotron" onclick="addCodeSnippet1()">
+                     <input class="btn btn-success" type="button" value="Header" onclick="addCodeSnippet3()">
+                     <input class="btn btn-success" type="button" value="3xPanel" onclick="addCodeSnippet4()">
+                     <input class="btn btn-success" type="button" value="Youtube" onclick="addCodeSnippet5()">
+                     <input class="btn btn-success" type="button" value="Form" onclick="addCodeSnippet6()">
+                     <input class="btn btn-success" type="button" value="Footer" onclick="addCodeSnippet7()">
+                     <input class="btn btn-success" type="button" value="br" onclick="addCodeSnippet8()">
+                     <input class="btn btn-success" type="button" value="hr" onclick="addCodeSnippet9()">
+                     <input class="btn btn-success" type="button" value="show/hide" onclick="showAndHide()">
+                     <input class="btn btn-success" type="button" value="DeleteAll" onclick="deleteSnippet()">
+                </div>
+            </form>
+        </div>
+            
+            
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mainBox">
+                   
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="added" id="addedId">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+//STARTUP FIRST:
+$( document ).ready(function() {
+  // Handler for .ready() called.
+});
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+
+//Show hide textbox
+function showAndHide() {
+    //code
+    $(".mainBox").toggle( "slow" );
+    
+}
+
+
+//DELETE Code Snippets
+function deleteSnippet() {
+    //code
+    $(".added").empty();
+    $(".mainBox").empty();
+    
+}
+
+//CODE SNIPPETS START:
+function addCodeSnippet1() {
+    //code
+    
+    var codeBlock = '<div class="jumbotron"> <h1>Hello, world!</h1><p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p></div>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+function addCodeSnippet2() {
+    //code
+    
+    var codeBlock = '<nav class="navbar navbar-default navbar-fixed-top"><div class="container"></div></nav> <ul class="breadcrumb"><li><a href="#">Home</a></li><li><a href="#">Library</a></li><li>Data</li></ul>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+function addCodeSnippet3() {
+    //code
+    
+    var codeBlock = '<div class="page-header"><h1>Example page header <small>Subtext for header</small></h1></div>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+function addCodeSnippet4() {
+    //code
+    
+    var codeBlock = '</br><div class="row">   <div class="col-md-4">  <div class="panel panel-default"><div class="panel-heading">Panel heading without title</div><div class="panel-body">Panel content</div></div></div><div class="col-md-4">  <div class="panel panel-default"><div class="panel-heading">Panel heading without title</div><div class="panel-body">Panel content</div></div></div><div class="col-md-4">  <div class="panel panel-default"><div class="panel-heading">Panel heading without title</div><div class="panel-body">Panel content</div></div></div></div></br>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+
+function addCodeSnippet5() {
+    //code
+    
+    var codeBlock = '<div class="row">   <div class="col-md-4">  <h2>Heading</h2><p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p><p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p></div><div class="col-md-8">  <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/b-Cr0EWwaTk"></iframe></div></div></div></br>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+
+function addCodeSnippet6() {
+    //code
+    
+    var codeBlock = '<form class="form-signin"><h2 class="form-signin-heading">Please sign in</h2><label for="inputEmail" class="sr-only">Email address</label><input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><label for="inputPassword" class="sr-only">Password</label><input type="password" id="inputPassword" class="form-control" placeholder="Password" required><div class="checkbox"><label><input type="checkbox" value="remember-me"> Remember me</label></div><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></form>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+
+function addCodeSnippet7() {
+    //code
+    
+    var codeBlock = '</br><div class="row"><div class="col-md-6"><p> Testwebsite.net | lorem ipsum lorem</p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--><div class="col-md-1"><p><a href="http://getbootstrap.com/">LBootstrap</a></p></div><!--colmd4--></div></div></br>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+function addCodeSnippet8() {
+    //code
+    
+    var codeBlock = '</br>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+function addCodeSnippet9() {
+    //code
+    
+    var codeBlock = '<hr>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"</br></br>");
+    
+}
+
+//CODE SNIPPETS END:
+
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+</script>
+
+</body>
+</html>
