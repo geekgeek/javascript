@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src='http://draggabilly.desandro.com/draggabilly.pkgd.js'></script>
+
+
+</head>
+<body>
+<style>
+.codeSet{
+color:blue;
+}
+</style>
+
+<form><div class="form-group">
+
+<input type="button" value="Show Code" onclick="customFunction()"><br>
+
+<script>function customFunction(){alert("customFunction speaking")};</script>
+
+</div></form>
+<div class="codeSet">
+
+</div>
+<script>
+//STARTUP FIRST:
+$( document ).ready(function() {
+  // Handler for .ready() called.  
+  startUpCode();
+  $(".codeSet").hide();
+});
+
+//START CODE:
+function startUpCode() {
+    //code
+    var codeBlock = '  <!DOCTYPE html><html lang="en"><head> <meta charset="utf-8"> <meta content="IE=edge" http-equiv="X-UA-Compatible"> <meta content="width=device-width, initial-scale=1" name="viewport"> <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --> <title>Bootstrap 101 Template</title> <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></head><body> <nav class="navbar navbar-inverse navbar-fixed-top"> <div class="container"> <div class="navbar-header"> <button aria-controls="navbar" aria-expanded="false" class= "navbar-toggle collapsed" data-target="#navbar" data-toggle= "collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class= "icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Home</a> <a class= "navbar-brand" href="#">About</a> </div> <div class="navbar-collapse collapse" id="navbar"> <form class="navbar-form navbar-right"> <div class="form-group"> <input class="form-control" placeholder="Email" type= "text"> </div> <div class="form-group"> <input class="form-control" placeholder="Password" type="password"> </div><button class="btn btn-success" type="submit">Sign in</button> </form> </div><!--/.navbar-collapse --> </div> </nav> <!-- Main jumbotron for a primary marketing message or call to action --> <div class="jumbotron"> <div class="container"> <div class="row"> <div class="col-md-4"> <h3>Contact Us</h3> <form role="form"> <div class="form-group"> <label for="exampleInputName2">Name</label> <input class="form-control" id="exampleInputName2" placeholder="Joe Doe" type="text"> </div> <div class="form-group"> <label for="exampleInputEmail2">Email</label> <input class="form-control" id="exampleInputEmail2" placeholder="joe.doe@example.com" type="email"> </div> <div class="form-group"> <label for="exampleInputEmail2">Project Information</label> <input class="form-control" id= "exampletext" placeholder="a standard website" type="text"> </div><button class="btn btn-default" type= "submit">Submit</button> </form> </div> <div class="col-md-8"> <h3>Main heading</h3><iframe allowfullscreen="" frameborder="0" height="315" src= "https://www.youtube.com/embed/b-Cr0EWwaTk" width= "560"></iframe> </div> </div> </div> </div> <div class="container"> <!-- Example row of columns --> <div class="row"> <div class="col-md-4"> <h2>Heading1</h2> <p>some tekst1</p> <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> </div> <div class="col-md-4"> <h2>Heading2</h2> <p>some tekst2</p> <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> </div> <div class="col-md-4"> <h2>Heading3</h2> <p>some tekst3</p> <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> </div> </div> <hr> <footer> <p>&copy; 2015 Company, Inc.</p> </footer> </div><!-- /container --></body></html>';
+    $(".codeSet").append(escapeHtml(codeBlock));
+}
+
+
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+
+
+function customFunction()
+{
+	$(".codeSet").toggle();
+}
+</script>
+<body>
+
+</body>
