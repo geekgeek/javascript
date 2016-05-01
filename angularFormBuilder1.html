@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html ng-app="myApp1">
+<head>
+    
+    <title>My Angular App</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+         
+        <script
+			  src="https://code.jquery.com/jquery-1.12.3.min.js"
+			  integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+			  crossorigin="anonymous"></script>
+        
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+    
+ <style>
+.mainBox{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:auto;
+  max-width:100%;
+}
+.mainBox{
+    font-family:"Verdana, Geneva, sans-serif";
+}
+textarea {
+  max-width: 99%;
+  background-color:white;
+  color:black;
+}
+</style>
+
+</head>
+
+<body>
+  
+<div class="container" ng-controller="mainController">
+        <div class="row">
+            <div class="col-md-12">
+            <h2>Edit mode:</h2><hr>
+               <input class="btn btn-success" type="button" value="show/hide" onclick="customShowHide('#EditMode')">
+            </div>
+            
+            <div id="EditMode">
+                <div class="col-md-6">
+                    <input class="btn btn-success" type="button" value="Edit" onclick="customShowHide('#editList')">
+                    </div>
+                <div class="col-md-6">
+                    <input class="btn btn-success" type="button" value="Info" onclick="customShowHide('#infoList')">
+                </div>
+            <div class="col-md-6" id="editList">
+                
+                <div>              
+
+                    <h4>Length: {{arrLinkedList1.length}}</h4>
+                    <ol>
+                        <li ng-repeat="stuff in arrLinkedList1">
+                            <input type="text" ng-model="stuff.item" />
+                            <input type="text" ng-model="stuff.code" />
+                        </li>
+                    </ol>
+                
+                </div>
+            </div>
+            
+            <div class="col-md-6" id="infoList">
+            <h4>Code</h4>
+                    <ol>
+                        <li ng-repeat="stuff in arrLinkedList1">
+                           {{ stuff.code}}<hr>
+                        </li>
+                    </ol>
+            
+            </div>
+         </div>
+    
+    
+  <br><br>
+  
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                 <h2>Form builder</h2>
+                <form name="calc">
+
+                <div class="form-group">
+                   
+                        
+                  <input ng-repeat="keys in arrLinkedList1"class="btn btn-success" type="button" ng-value=keys.item ng-click="addCodeSnippetFlexible(keys.code)">
+
+                    
+
+                     <input class="btn btn-success" type="button" value="finish" onclick="finishOff()">
+                     <input class="btn btn-success" type="button" value="show/hide" onclick="showAndHide()">
+                     <input class="btn btn-success" type="button" value="DeleteAll" onclick="deleteSnippet()">
+                </div>
+            </form>
+        </div>
+            
+            
+    <div class="row">
+        <div class="col-md-12">
+            <div id="mainBoxDiv">
+                   <form class="mainBox">
+                    
+                    
+                   </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+            
+              <div class="col-md-12">
+                <div class="added" id="addedId">
+            </div>
+        </div>
+    </div>
+            
+             </div>
+    </div>
+    
+    
+    </div>
+                
+<br><br><br><br>
+    
+<script>
+    
+        
+var myApp1 = angular.module('myApp1', []);
+
+
+myApp1.controller("mainController", function($scope)
+{
+    
+    $scope.arrLinkedList1 = 
+    [
+     {item: "inputbox", code:'name:<br><input type="text" name="firstname"><br>'},
+     {item: "inputArea", code:' Test name:<br><textarea name="message" rows="10" cols="30"></textarea><br><br>'},
+     {item: "radioChecked", code:'<input type="radio" name="gender" value="male" checked> Male<br>'},
+     {item: "radio", code:' <input type="radio" name="gender" value="female"> Female<br>'},
+     {item: "button", code:'<input type="button" value="Button" onclick="customFunction()"><br>'},
+     {item: "optgroup", code:'<select name="cars"><option value="volvo">Volvo</option><option value="saab">Saab</option><option value="fiat">Fiat</option><option value="audi">Audi</option></select><br>'},
+     {item: "optgroupAdv", code:' <select><optgroup label="Swedish Cars">\
+    <option value="volvo">Volvo</option>\
+    <option value="saab">Saab</option>\
+  </optgroup>\
+  <optgroup label="German Cars">\
+    <option value="mercedes">Mercedes</option>\
+    <option value="audi">Audi</option>\
+  </optgroup>\
+</select> <br>'},
+     {item: "br", code:'<br>'},
+     {item: "hr", code:'<hr>'},
+     {item: "Heading", code:'<h2>Heading</h2><br>'},
+    ];
+    
+    
+    $scope.addCodeSnippetFlexible = function(codeAdded) {
+    //code
+  
+    $scope.codeBlock = codeAdded;
+    $(".added").append($scope.codeBlock);
+    $(".mainBox").append(escapeHtml($scope.codeBlock)+"<br><br>");
+    }
+    
+    
+
+});
+    
+</script>
+    
+    
+<script>
+//STARTUP FIRST:
+$( document ).ready(function() {
+  // Handler for .ready() called.  
+  startUpCode();
+});
+//START CODE:
+function startUpCode() {
+    //code
+    var codeBlock = '  <form><div class="form-group">';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"<br><br>");
+    $('#EditMode').hide();
+}
+//main program
+function sumValue()
+{
+var getBigText = calc.message.value;
+var lengthOfText = getBigText.length; 
+    var txt1 = calc.message.value;           
+    $('.added').html(txt1); 
+};
+//Show hide textbox
+function showAndHide() {
+    //code
+    $(".mainBox").toggle( "slow" );
+    
+}
+    
+function customShowHide(divHide)
+{
+        $(divHide).toggle("slow");
+}
+//DELETE Code Snippets
+function deleteSnippet() {
+    //code
+    $(".added").empty();
+    $(".mainBox").empty();
+    
+    
+    var codeBlock = '  <form><div class="form-group">';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"<br><br>");
+}
+//###################################################################
+//###################################################################
+//###################################################################
+//CODE SNIPPETS START:
+
+function addCodeSnippet10() {
+    //code
+    var codeBlock = '<h2>Heading</h2><br>';
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"<br><br>");
+    
+}
+    
+    
+function addCodeSnippetFlexible(codeAdded) {
+    //code
+  
+    var codeBlock = codeAdded;
+    $(".added").append(codeBlock);
+    $(".mainBox").append(escapeHtml(codeBlock)+"<br><br>");
+}
+//Code snippets end
+//###################################################################
+//###################################################################
+//###################################################################
+//Finish off code snippet
+function finishOff() {
+    //code
+    var extraCode = '<script>function customFunction(){alert("customFunction speaking")};'+'</'+'script>'
+    var codeBlock = '</div></form>';
+    $(".added").append(extraCode+codeBlock);
+    $(".mainBox").append(escapeHtml(extraCode)+"<br><br>"+escapeHtml(codeBlock)+"<br><br>");
+    
+}
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+</script>
+            
+            </body>
+</html> 
