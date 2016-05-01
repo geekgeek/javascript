@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp1">
+<head>
+    
+    <title>My Angular App</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+         
+        <script src="jquery/jquery112.js" type="text/javascript"></script>
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type = "text/css"/>
+    
+        <script ng-app="app1.js"></script>
+ 
+</head>
+
+<body>
+  
+<div class="container">
+
+                
+                <div ng-controller="mainController">              
+
+                    <h4>Length: {{arrAddedText.length}}</h4>
+                    <ul>
+                        <li ng-repeat="stuff in arrAddedText">
+                            {{stuff}} 
+                            <input type="text" ng-model="stuff" />
+                        </li>
+                    </ul>
+                
+                </div>
+                
+</body>
+</html> 
+    
+<script>
+    
+        
+var myApp1 = angular.module('myApp1', []);
+
+
+myApp1.controller("mainController", function($scope)
+{
+    
+    $scope.arrAddedText = 
+    [
+    ' text1',
+    ' text2',
+    ' text3',
+    ' text4',
+    ' text5',
+    ' text6',
+    ' text7',
+    ' text8',
+    ' text9',
+    ' text10'
+    ];
+
+});
+    
+</script>
