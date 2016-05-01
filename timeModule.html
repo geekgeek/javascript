@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+  </head>
+  <body> 
+			   
+			   
+			   <div id="timeNow">
+                    
+                    <form>
+                        <div class="form-group">
+                            <h2>Er tiden mer enn:</h2>
+                            Tast inn tid:<br><input type="text" name="firstname" id="textbox1"><br>
+
+                            Resultat:<br><input type="text" name="firstname" id="textbox2"><br>
+
+                            <input type="button" value="Button" onclick="checkTime()"><br>
+                            <p id="timeLabel"></p>
+                        </div>
+                    </form>
+                    
+                    
+                </div>
+				
+<script type="text/javascript">
+
+function checkTime()
+{
+var currentTime = new Date()
+var today = new Date().getHours();
+if (today >= $("#textbox1").val() ) {
+   $("#textbox2").val("Ja");
+} else {
+    $("#textbox2").val("Nei");
+}
+//$("#timeLabel").text(currentTime);
+
+
+}
+</script>
+
+
+
+</body>
+
+
+
+</html>
