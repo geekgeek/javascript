@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Realtime online html editor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<style type="text/css" media="screen">
+    #editor { 
+        height: 400px;
+  overflow:scroll; 
+    }
+    
+    .added{
+  border:solid 1px;
+  padding:2px;
+  overflow:scroll; 
+  height:250px;
+}
+
+</style>
+</head>
+    
+<body>
+
+<div id="editor" name="superEdit" class="mainBox">
+}</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js
+
+" type="text/javascript" charset="utf-8"></script>
+    
+
+    <script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/html");
+    
+
+    
+//STARTUP FIRST:
+//https://ace.c9.io/#nav=about
+$( document ).ready(function() 
+{
+    editor.setValue('<html>\
+    <head>\
+    </head>\
+    <body><h1>realtime html editor</h1>\
+    </body>\
+    </html>');
+    $(document).keyup(function()
+    {
+        
+       $(".added").html(editor.getValue());
+     
+    });
+
+    
+});
+
+
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+
+</script>
+    
+    <div class="added" id="addedId"> </div>
+</body>
+</html>
