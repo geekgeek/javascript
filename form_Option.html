@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+
+</head>
+
+<body>
+<h1>realtime html editor</h1>
+    <select name="templateStyle" id="templateStyle1">
+        <option value="template1" id="template1">template1</option>
+        <option value="template2" id="template2">template2</option>
+        <option value="template3" id="template3">template3</option>
+        <option value="template4" id="template4">template4</option>
+    </select>
+<input type="button" name="name" value="ssd" onclick="selectOptVal();">
+    
+<script>
+selectOptVal();
+function selectOptVal()
+{
+var x = document.getElementById("templateStyle1").selectedIndex;
+alert(document.getElementsByTagName("option")[x].value);
+}
+</script>
+</body>
+
+</html>
