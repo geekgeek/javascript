@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+    </script>
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type=
+    "text/javascript">
+    </script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"
+    type="text/javascript">
+    </script>
+    <style>
+    #added
+	{
+    border:solid 1px;
+    padding:2px;
+    overflow:scroll; 
+    height:auto;
+    max-width:100%;
+	font-family:"Verdana, Geneva, sans-serif";
+    }
+	
+
+    textarea {
+    max-width: 99%;
+    background-color:white;
+    color:black;
+    }
+
+	
+    #makeMeDroppable 
+	{ 
+	min-height: 200px; 
+	border: 10px solid black; 
+	}
+	
+	.imageBoxStyle
+	{
+	margin:30px;
+	padding:20px;
+	width: 700px; 
+	min-height:500px;
+	border: 5px solid purple;
+	}
+	#makeMeDroppable2
+	{ 
+	min-height: 200px; 
+	border: 10px solid black; 
+	}
+	
+	#makeMeDroppable3
+	{ 
+	min-height: 10px; 
+	border: 5px solid black; 
+	}
+	
+	#dnrList .liNrMain
+	{
+	margin:30px;
+	padding:20px;
+	width: 700px; 
+	min-height:500px;
+	border: 5px solid #999;
+	}
+	
+	#dnrList2 .liNrMain
+	{
+	margin:30px;
+	padding:20px;
+	width: 700px; 
+	min-height:500px;
+	border: 5px solid #999;
+	}
+	
+	.imageBoxS
+	{
+	margin:10px;
+	float:left;
+	}
+    </style>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        
+        <div class="row">
+		<h2>Code list adder</h2>
+			<div class="col-md-6">
+					<input class="btn btn-success" onclick="addTheCode()" type="button" value="add">
+					<input class="btn btn-danger" onclick="clearText()" type="button" value="clear">
+					<input class="btn btn-danger" onclick="deleteSnippet()" type="button" value="DeleteAll">
+			</div>
+            <div class="col-md-6">
+				<input class="btn btn-warning" onclick=" customShowHide(previewChild)" type="button" value="Preview">
+				<input class="btn btn-warning" onclick=" customShowHide(makeMeDroppable)" type="button" value="Content">
+				<input class="btn btn-warning" onclick=" customShowHide(added)" type="button" value="Code">
+						
+			</div>
+		</div>
+		
+            <div class="row">
+			<div class="col-md-2">
+			                <div id="makeMeDraggable">
+						 Before:<br><input type="text" name="firstname" id="beforeImg" value="<div>"><br>
+						 Heading:<br><textarea name="message" rows="1" cols="30" id="headerInput"></textarea><br>
+						 ImageUrl:<br><input type="text" name="firstname" id="imageInput"><br>
+						 ImageMaxWitdh:<br><input type="text" name="firstname" id="imagenrWidth"  value="200" ><br>
+						 ImageMaxHeight:<br><input type="text" name="firstname" id="imagenrHeight"><br>
+						 Main content:<br><textarea name="message" rows="10" cols="30" id="textAr1"></textarea><br><br>
+						 After:<br><input type="text" name="firstname" id="afterImg" value="</div>"><br>
+						</div>
+			</div>
+			
+			<div class="col-md-10" id="preview">
+			<h3>Preview</h3>
+				<div id="previewChild">
+					<div id="makeMeDroppable2">
+							
+
+							</div>
+					<div id="makeMeDroppable3">
+							
+
+					</div>
+				</div>
+			</div>
+			
+                <div class="col-md-2" id="dragMenu">
+				
+                    <div class="box1" id="content">
+        
+						
+
+                    </div>
+                </div>
+				
+				<div class="col-md-10">
+				<h3>Content</h3>
+						<div id="makeMeDroppable">
+						
+
+						</div>
+				</div>
+				<br><br>
+				<h3>Code</h3>
+				<div class="col-md-12" id="added">
+				
+				</div>
+			</div>
+        </div>
+        <script>
+        //STARTUP FIRST:
+        $( document ).ready(function()
+        {
+        // Handler for .ready() called.  
+        startUpCode();
+        });
+
+        //START CODE:
+        function startUpCode()
+        {
+			$( "#makeMeDraggable" ).keydown(function() 
+				{
+					addTheCode2();
+				});
+			$( "#makeMeDraggable" ).keyup(function() 
+				{
+					addTheCode2();
+				});
+        }
+		
+        //Code snippets end
+        //###################################################################
+        //###################################################################
+        //##############################################################
+		
+		function addTheCode()
+		{
+			var imageGetBox = $("#imageInput").val();
+			var textBox1 = $("#headerInput").val();
+			var textarea2 = $("#textAr1").val();
+			
+			var imagesWidth = $("#imagenrWidth").val();
+			var imagesHeight = $("#imagenrHeight").val();
+			
+			var beforeImageGal = $("#beforeImg").val();
+			var afterImageGal = $("#afterImg").val();
+			
+			var sumAddText = beforeImageGal + textBox1 + '<img src="' + imageGetBox + '" class="imageBoxS" style="width:'+imagesWidth+'px;height:'+imagesHeight+'px;"' +">" + textarea2 + afterImageGal;
+			
+			$("#makeMeDroppable").append(sumAddText);
+			$("#added").append(escapeHtml(sumAddText)+"<br><br>");
+			
+		}
+		
+		function addTheCode2()
+		{
+			var imageGetBox = $("#imageInput").val();
+			var textBox1 = $("#headerInput").val();
+			var textarea2 = $("#textAr1").val();
+			
+			var imagesWidth = $("#imagenrWidth").val();
+			var imagesHeight = $("#imagenrHeight").val();
+			
+			var beforeImageGal = $("#beforeImg").val();
+			var afterImageGal = $("#afterImg").val();
+			
+			
+			
+			
+			$("#makeMeDroppable2").html((beforeImageGal + textBox1 + '<img src="' + imageGetBox + '" class="imageBoxS" style="width:'+imagesWidth+'px;height:'+imagesHeight+'px;"' +">" + textarea2 + afterImageGal));
+			$("#makeMeDroppable3").text((beforeImageGal + textBox1 + '<img src="' + imageGetBox + '" class="imageBoxS" style="width:'+imagesWidth+'px;height:'+imagesHeight+'px;"' +">" + textarea2 + afterImageGal));
+		}
+		
+		//clear textareas text
+		function clearText()
+		{
+			$("#imageInput").val('');
+			$("#headerInput").val('');
+			$("#textAr1").val('');
+		}
+		//Delete code
+		function deleteSnippet()
+		{
+		$("#makeMeDroppable").empty();
+		$("#added").empty();
+		}
+		//Show hide
+		function customShowHide(divHide)
+{
+        $(divHide).toggle("slow");
+};
+
+		//Escape HTML
+        function escapeHtml(text)
+        {
+			'use strict';
+			return text.replace(/[\"&<>]/g, function (a) {
+			return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+			});
+        };
+
+
+        </script> 
+
+
+    </div>
+</body>
+</html>
