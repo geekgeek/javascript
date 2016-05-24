@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+    </script>
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type=
+    "text/javascript">
+    </script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"
+    type="text/javascript">
+    </script>
+	
+    <style>
+  /*Body content*/
+        body
+        {
+
+        }
+
+
+
+
+/*Bottom row*/
+        #ddown
+     	{
+             background-color:white; /* #2A2730 */
+             color:black;
+        }
+
+
+/*Marketing message*/
+        .jumbotron
+        {
+             background-color: white; /*#7E7E7E*/
+             color:black;
+        }
+
+
+/*Buttons*/
+        .btn
+        {
+
+
+        }
+
+
+/*Navigation bar on top*/
+        .navbar
+        {
+background-color:white;
+
+        }
+
+
+/*Links top*/
+        ul li a
+        {
+
+        }
+
+
+/*Links bottom*/
+        p a
+        {
+
+           color:#139FD7;
+        }
+
+/*Message boxes*/
+        #messageboxes
+        {
+            border: none   ;
+        }
+
+/*JUMBOTRON START*/
+/*Main message jumbotron*/
+        #mainMessage
+        {
+            border: none;
+        }
+/*Main message text jumbotron*/
+        #maintextmessage
+        {
+            border: none;
+        }
+/*Main video text jumbotron*/
+        #mainvideomessage
+        {
+            border: none;
+            background-color:white;
+        }
+
+/*Main headline div jumbotron*/
+        #mainheadlinemessage
+        {
+            border: none;
+            color:black;
+        }
+
+/*Main headline text jumbotron*/
+        #mainheadlinetextmessage
+        {
+
+        }
+/*JUMBOTRON END*/
+
+/*RowJumbotron START*/
+        #rowJumboTron
+        {
+		 background-image: url('img/background1.png');
+        }
+
+        #rowJumboTronMainTekst
+        {
+            color:white;
+        }
+
+        #rowJumboTronSecondText
+        {
+            color:black;
+        }
+/*RowJumbotronEND*/
+
+#mainLogo
+{
+	max-width:150px;
+}
+
+</style>
+ 
+    <title></title>
+</head>
+<body>
+   <nav class="navbar navbar-default">
+     <div class="container-fluid" >
+     <!-- NAVIGATION ##########################################-->
+            <ul class="nav navbar-nav navbar-left">
+			
+			<li><img class="img-responsive" id="mainLogo" src="imgMain/OA_Logo.jpg" alt="image1" width="99%" align="left"></li>
+
+
+                  <li><input class="btn btn-primary" type="button" value="Home" onclick="homeLink()"></li>
+                  <li><input class="btn btn-primary" type="button" value="Our Journey" onclick="contentOurJourney()"></li>
+                  <li><input class="btn btn-primary" type="button" value="On site events" onclick="contentEvents()"></li>
+				  <li><input class="btn btn-primary" type="button" value="news" onclick="contentNews()"></li>
+				  <li><input class="btn btn-primary" type="button" value="about us" onclick="contentAboutUs()"></li>
+				  <li><input class="btn btn-primary" type="button" value="Show All content" onclick="showAllContent()"></li>
+              </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+
+              </li>
+
+            </ul>
+        </div><!--ENDContainer ##########################################-->
+</nav><!--ENDNAV ##########################################-->
+<!--END NAVIGATION####################################################################################-->
+
+
+<!--JUMBOTRON ROW START####################################################################################-->
+<div class="jumbotron" id="rowJumboTron"><!--Jumbotron####################################################################################-->
+    <div class="container"><!--CONTAINER ####################################################################################-->
+        <div class="row"><!-- ROW  #################################################################################### -->
+
+            <div class="col-md-4">
+
+      <h1 id="rowJumboTronMainTekst">Welcome!</h1>
+      <p id="rowJumboTronSecondText">Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+	  <input class="btn btn-success" type="button" value="Read more" onclick="contentReadMoreMain()"><br>
+            </div>
+		
+
+            <div class="col-md-8">
+                    <img class="thumbnail" id="imagerow" src="imgMain/pic1.jpg" alt="image1" width="98%" align="left">
+                    
+            </div>
+
+        </div><!-- END ROW  #################################################################################### -->
+    </div><!-- END CONTAINER  #################################################################################### -->
+</div><!--END Jumbotron####################################################################################-->
+<!--JUMBOTRON ROW END####################################################################################-->
+<hr>
+<!-- SHOW/HIDE ROW-->
+<div class="container" id="contentDescription1"><!--CONTAINER ####################################################################################-->
+<h2>Read more content</h2>
+<div class="row"><!-- ROW  #################################################################################### -->
+
+			<div class="col-md-6">
+			<img class="img-responsive" src="imgMain/inc5k-2075x600.jpg" alt="image1" align="left" width="98%">
+			</div>
+			<div class="col-md-6">
+			<h2>We made the inc 500</h2>
+			<p>Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+			
+			</div>
+ </div><!-- END ROW  #################################################################################### -->
+ </div><!-- END CONTAINER  #################################################################################### -->
+
+
+ <!-- SHOW/HIDE Journey-->
+<div class="container" id="contentOurJourney"><!--CONTAINER ####################################################################################-->
+<h2>Our journey</h2>
+<div class="row"><!-- ROW  #################################################################################### -->
+			<div class="col-md-6">
+			<img class="img-responsive" src="imgMain/Untitled-6.jpg" alt="image1" align="left">
+			</div>
+			<div class="col-md-6">
+			<h2>We made the inc 500</h2>
+			<p>Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+			
+			</div>
+ </div><!-- END ROW  #################################################################################### -->
+ </div><!-- END CONTAINER  #################################################################################### -->
+ 
+
+ <!-- SHOW/HIDE Events-->
+<div class="container" id="contentEvents"><!--CONTAINER ####################################################################################-->
+<h2>On site events</h2>
+<div class="row"><!-- ROW  #################################################################################### -->
+			<div class="col-md-6">
+			<img class="img-responsive" src="imgMain/pic2.jpg" alt="image1" align="left">
+			</div>
+			<div class="col-md-6">
+			<h2>We made the inc 500</h2>
+			<p>Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+			
+			</div>
+ </div><!-- END ROW  #################################################################################### -->
+ </div><!-- END CONTAINER  #################################################################################### -->
+ 
+
+ <!-- SHOW/HIDE News-->
+<div class="container" id="contentNews"><!--CONTAINER ####################################################################################-->
+<h2>News</h2>
+<div class="row"><!-- ROW  #################################################################################### -->
+			<div class="col-md-6">
+			<img class="img-responsive" src="imgMain/Ban2T4.jpg" alt="image1" align="left">
+			</div>
+			<div class="col-md-6">
+			<h2>We made the inc 500</h2>
+			<p>Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+			
+			</div>
+ </div><!-- END ROW  #################################################################################### -->
+ </div><!-- END CONTAINER  #################################################################################### -->
+ 
+
+
+ <!-- SHOW/HIDE News-->
+<div class="container" id="contentAboutUs"><!--CONTAINER ####################################################################################-->
+<h2>About us</h2>
+<div class="row"><!-- ROW  #################################################################################### -->
+			<div class="col-md-6">
+			<img class="img-responsive" src="imgMain/Ban1NT1.jpg" alt="image1" align="left">
+			</div>
+			<div class="col-md-6">
+			<h2>We made the inc 500</h2>
+			<p>Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.Our company travels to your location and hosts eye exams for schools and companies.</p>
+			
+			</div>
+ </div><!-- END ROW  #################################################################################### -->
+ </div><!-- END CONTAINER  #################################################################################### -->
+ 
+<hr>
+
+<!--ICONS##########################################################################################################################################################-->
+<div class="container" id="miniImageRow"><!--CONTAINER ####################################################################################-->
+    <div class="row">
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/shutterstock_193579790.jpg" alt="image1" width="128" align="left">
+
+      </div>
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/shutterstock_203141029.jpg" alt="image2" width="128" align="left">
+
+      </div>
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/shutterstock_204650371.jpg" alt="image3" width="128" align="left">
+
+      </div>
+
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/shutterstock_256142941.jpg" alt="image4" width="128" align="left">
+
+      </div>
+
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/shutterstock_272696507.jpg" alt="image5" width="128" align="left">
+
+      </div>
+
+
+             <!--max 36-->
+      <div class="col-md-2" >
+          <img class="thumbnail" id="imagerow" src="imgMain/van.jpg" alt="image6" width="128" align="left">
+
+      </div>
+
+    </div><!--Row-->
+</div> <!-- END CONTAINER  #################################################################################### -->
+<!--END ICONS##########################################################################################################################################################-->
+
+<br>
+<hr>
+<!--FOOTER START-->
+<div id="ddown">
+    <br><br>
+<!--CONTAINER ####################################################################################-->
+    <div class="container">
+<!--FOOTER ####################################################################################-->
+      <footer>
+    <!--CompanyName ####################################################################################-->
+                <div class="col-md-6">
+                    <p> Optical Academy | all rights reserved</p>
+                </div><!--colmd4-->
+
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+                 
+            
+                
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+                 
+            
+                
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+                 
+            
+                
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+                 
+            
+                
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+                 
+            
+                
+                    <div class="col-md-1">
+                        
+                     </div><!--colmd4-->
+    <!--LinksEnd ####################################################################################-->
+      </footer>
+<!--END FOOTER ####################################################################################-->
+    </div> <!-- END CONTAINER  #################################################################################### -->
+    <br><br>
+</div> <!-- END ddown  #################################################################################### -->
+
+<script>
+//STARTUP FIRST:
+$( document ).ready(function()
+{
+// Handler for .ready() called.  
+startUpCode();
+});
+
+//START CODE:
+function startUpCode()
+{
+$("#contentDescription1").hide();
+$("#contentOurJourney").hide();
+$("#contentEvents").hide();
+$("#contentNews").hide();
+$("#contentAboutUs").hide();
+}
+
+//SHOW HIDE:
+
+
+
+
+function homeLink()
+{
+	$("#rowJumboTron").show("fast");
+$("#miniImageRow").show("fast");
+}
+function setAllLinkF()
+{
+$("#rowJumboTron").hide();
+}
+
+function hideAllContent()
+{
+$("#contentDescription1").hide();
+$("#contentOurJourney").hide();
+$("#rowJumboTron").hide();
+$("#contentEvents").hide();
+
+$("#contentNews").hide();
+$("#contentAboutUs").hide();
+
+$("#miniImageRow").hide();
+
+}
+
+function showAllContent()
+{
+var transformAtionSpeed = "slow";
+
+$("#contentDescription1").show(transformAtionSpeed);
+$("#contentOurJourney").show(transformAtionSpeed);
+$("#rowJumboTron").show(transformAtionSpeed);
+$("#contentEvents").show(transformAtionSpeed);
+
+$("#contentNews").show(transformAtionSpeed);
+$("#contentAboutUs").show(transformAtionSpeed);
+
+$("#miniImageRow").show(transformAtionSpeed);
+}
+
+function contentReadMoreMain()
+{
+hideAllContent();
+	$("#contentDescription1").toggle("fast");
+}
+
+function contentOurJourney()
+{
+hideAllContent();
+	$("#contentOurJourney").toggle("fast");
+
+}
+
+function contentEvents()
+{
+hideAllContent();
+	$("#contentEvents").toggle("fast");
+	
+}
+
+function contentNews()
+{
+hideAllContent();
+	$("#contentNews").toggle("fast");
+}
+
+function contentAboutUs()
+{
+hideAllContent();
+	$("#contentAboutUs").toggle("fast");
+}
+
+
+</script> 
+
+
+    </div>
+</body>
+</html>
