@@ -1,0 +1,636 @@
+<!doctype html>
+
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<style>
+
+body
+{
+/*	
+background-image:url("http://hd4wallpapers.net/wp-content/uploads/2014/12/Ocean-Background.jpg");
+background-repeat: repeat-y-x;
+	 */
+}
+/* box surrounding 3 column */
+
+/* 3 column styles */
+#left
+{
+	background-color:#00CC66;
+	height:600px;
+	overflow:auto;
+    border:4px solid black;
+}
+
+#middle
+{
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+	background-color:white;
+	float:left;
+	height:400px;
+	width:100%;
+	overflow:auto;
+	border:4px solid black;
+}
+
+#middleBottom
+{
+	background-color:#003364;
+	color:white;
+	float:left;
+	height:200px;
+	width:100%;
+	overflow:auto;
+	border:4px solid black;
+}
+
+#right
+{
+float:left;
+background-color:#D9FF66;
+height:600px;
+overflow:auto;
+border:4px solid black;
+}
+
+
+/* 3 column heading*/
+.insideHeading
+{
+margin-top:0px;
+margin-bottom:0px;
+background-color:black;
+color:white;
+
+}
+
+#dividerLine
+{
+
+    border-width: 5px;
+	border-color:black;
+}
+
+/* button styling */
+.mButtons
+{
+padding: 2px 6px 2px 10px;
+}
+
+#buttonImages
+{
+
+	width:24px;
+	height:24px;    
+}
+
+#elementSelected
+{
+    color:black;
+    background-color: white;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+</style>
+<title>ds</title>
+</head>
+
+<body>
+<br>
+<div class="container-fluid"><!-- #############################################################################-->
+	<div class="row"><!-- #############################################################################-->
+		<div class="col-md-2" id="left"><!-- #############################################################################-->
+		
+			<h3 class="insideHeading">Functions</h3>
+			<br>
+			 
+			 
+		     <button class="mButtons" onclick="setNr3heading()">
+			 <img src="https://cdn0.iconfinder.com/data/icons/layout-and-location/24/Untitled-2-23-128.png" alt="Mountain View" id="buttonImages"> 
+			 Text
+			 </button><br>
+
+			 
+			  <button class="mButtons" onclick="setNr2inputbox()">
+			 <img src="https://cdn2.iconfinder.com/data/icons/crystalproject/Open-Office-Icons/stock_form-formatted-field.png" alt="Mountain View" id="buttonImages"> 
+			 inputbox
+			 </button><br>
+
+			 <button class="mButtons" onclick="setNr4textarea()">
+			 <img src="https://cdn2.iconfinder.com/data/icons/crystalproject/Open-Office-Icons/stock_form-listbox.png" alt="Mountain View" id="buttonImages"> 
+			 textarea
+			 </button><br>
+			 
+			 <button class="mButtons" onclick="setNr5check()">
+			 <img src="http://findicons.com/files/icons/1569/chalkwork_html/24/form_input_radio.png" alt="Mountain View" id="buttonImages"> 
+			 check
+			 </button><br>
+			 
+			 <button class="mButtons" onclick="setNr6dropdown()">
+			 <img src="https://cdn2.iconfinder.com/data/icons/gnomeicontheme/24x24/stock/table/stock_select-column.png" alt="Mountain View" id="buttonImages"> 
+			 dropdown
+			 </button><br>
+			 
+			 
+			 <button class="mButtons" onclick="setNr1Button()">
+			 <img src="https://cdn2.iconfinder.com/data/icons/crystalproject/Open-Office-Icons/stock_form-design-mode.png" alt="Mountain View" id="buttonImages"> 
+			 button
+			 </button><br>
+			 
+			 
+
+			 
+			      
+		 
+		</div><!-- #############################################################################-->
+
+
+                <div class="col-md-3" id="right"><!-- #############################################################################-->
+		
+			<h3 class="insideHeading">Properties</h3>
+			<br>
+
+                        <p id="elementText"> <span id="elementSelected">button</span><p>
+				
+					<table style="width:100%">
+					  <tr id="text1">
+						<td>text:</td>
+						<td><input type="text" name="lname" id="textName"></td>
+					  </tr>
+					  <tr id="id1">
+						<td>id:</td>
+						<td><input type="text" name="lname" id="textId"></td>
+					  </tr>
+					  
+					<tr id="class1">
+						<td>class:</td>
+						<td><input type="text" name="lname" id="textClass"></td>
+					  </tr>
+					  
+					  <tr id="function1">
+						<td>function:</td>
+						<td><input type="text" name="lname" id="textFunction"></td>
+					  </tr>
+					  
+					  <tr id="imageURL1">
+						<td>imageURL:</td>
+						<td><input type="text" name="lname" id="textImage"></td>
+					  </tr>
+					  
+					  <tr id="value1">
+						<td>value:</td>
+						<td><input type="text" name="lname" id="textValue"></td>
+					  </tr>
+					  
+					  <tr id="row1">
+						<td>row:</td>
+						<td><input type="text" name="lname" id="textRow"></td>
+					  </tr>
+					  
+					  <tr id="col1">
+						<td>col:</td>
+						<td><input type="text" name="lname" id="textCol"></td>
+					  </tr>
+					  
+					  <tr id="start1">
+						<td>nr1:</td>
+						<td><input type="text" name="lname" id="textStart"></td>
+					  </tr>
+					  
+					  <tr id="finish1">
+						<td>nr2:</td>
+						<td><input type="text" name="lname" id="textFinish"></td>
+					  </tr>
+					  
+					  <tr id="number31">
+						<td>nr3:</td>
+						<td><input type="text" name="lname" id="textNumber3"></td>
+					  </tr>
+					  
+					</table> 
+			   
+			   
+			   <br>
+			 <button id="mButtons" onclick="checkSelectedItem()">
+			 <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678092-sign-add-128.png" alt="Mountain View" id="buttonImages"> 
+			 add component
+			 </button>
+			 
+			 <button id="mButtons" onclick="clearTextBoxes()">
+			 <img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/128/delete.png" alt="Mountain View" id="buttonImages"> 
+			 clear
+			 </button>
+			 
+			 <hr id="dividerLine">
+			 <p>Menu buttons</p>
+			  <button id="mButtons" onclick="funcDeleteContent()">
+			 <img src="https://cdn4.iconfinder.com/data/icons/icocentre-free-icons/114/f-cross_256-128.png" alt="Mountain View" id="buttonImages"> 
+			 delete
+			 </button>
+		   
+		</div><!-- #############################################################################-->
+
+
+
+	<div class="col-md-7"><!-- #############################################################################-->
+		<div id="middle"><!-- #############################################################################-->
+		
+			<h3 class="insideHeading">Output</h3>
+
+                        <div id="addedContent">
+                            
+                        </div>
+
+		</div><!-- #############################################################################-->
+		
+		<div id="middleBottom"><!-- #############################################################################-->
+		
+			<h3 class="insideHeading">Code</h3>
+
+				
+                        <div id="addedContent2">
+
+                        </div>
+
+		</div><!-- #############################################################################-->
+
+	</div><!-- #############################################################################-->
+
+
+
+
+
+
+		
+	
+	
+	
+	
+	
+	
+	</div><!-- #############################################################################-->
+</div><!-- #############################################################################-->
+<script>
+
+//STARTUP FIRST:
+$( document ).ready(function() { 
+  startUpCode();
+});
+
+//START CODE:
+function startUpCode() 
+{
+
+}
+
+
+
+
+
+
+function funcDeleteContent()
+{
+$("#addedContent").text("");
+$("#addedContent2").text("");
+}
+
+
+
+function clearTextBoxes()
+{
+var arbitraryClearNames = ["#textName", "#textId", "#textClass","#textFunction","#textImage","#textValue","#textRow","#textCol","#textStart","#textFinish","#textNumber3"];
+var arrayLength = arbitraryClearNames.length;
+
+	for (var i = 0; i < arrayLength; i++) 
+	{
+            $(arbitraryClearNames[i]).val("");
+	}
+
+}
+
+
+//MAIN BUTTONS
+//#####################################################################################
+//#####################################################################################
+//#####################################################################################
+
+function nr1Button()
+{
+var textnr0 = $("#textName").val(); //show
+var textnr1 = $("#textId").val(); //show
+var textnr2 = $("#textClass").val(); //show
+var textnr3 = $("#textFunction").val();//show
+var textnr4 = $("#textImage").val(); //show
+
+
+var theCode ='<button id="'+textnr1+'" class="'+textnr2+'" onclick="'+textnr3+'"><img src="'+textnr4+'" alt="" style="width:24px;height:24px;" id="" class=""> '+textnr0+'</button>';
+
+
+
+$("#addedContent").append(theCode+"<br>" );
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr1Button()
+{
+	hideAllInputs();
+
+
+	var inputNames = ["#imageURL1", "#function1","#class1","#id1","#text1"];
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+                    $(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "button";
+
+	$("#elementSelected").text(selectedVal);
+}
+
+function nr2inputbox()
+{
+
+var selectedVal = "inputbox";
+
+var textnr0 = $("#textName").val();
+var textnr1 = $("#textId").val();
+var textnr2 = $("#textClass").val(); 
+var textnr3 = $("#textFunction").val(); //hide
+var textnr4 = $("#textImage").val(); //hide
+var textnr5 = $("#textValue").val(); //show
+
+
+
+var theCode = textnr0 + '<br><input type="text" id="'+textnr1+'" class="'+textnr2+'" name="'+textnr0+'" value="'+textnr5+'">';
+
+
+$("#addedContent").append(theCode+"<br>" );
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr2inputbox()
+{
+
+	hideAllInputs();
+
+	var inputNames = ["#value1","#class1","#id1","#text1"];
+	
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+			$(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "inputbox";
+	$("#elementSelected").text(selectedVal);
+}
+
+
+
+function nr3Heading()
+{
+
+var selectedVal = "headingtext";
+
+var textnr0 = $("#textName").val();
+var textnr1 = $("#textId").val();
+var textnr2 = $("#textClass").val(); 
+
+
+
+var theCode = '<h3 id="'+textnr1+'" class="'+textnr2+'">'+textnr0+'</h3>';
+
+
+$("#addedContent").append(theCode);
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr3heading()
+{
+
+	hideAllInputs();
+
+	var inputNames = ["#class1","#id1","#text1"];
+	
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+			$(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "headingtext";
+	$("#elementSelected").text(selectedVal);
+}
+
+
+
+function nr4textarea()
+{
+
+var selectedVal = "textarea";
+
+var textnr0 = $("#textName").val();
+var textnr1 = $("#textId").val();
+var textnr2 = $("#textClass").val(); 
+var textnr3 = $("#textFunction").val(); //hide
+var textnr4 = $("#textImage").val(); //hide
+var textnr5 = $("#textValue").val();
+
+var textnr6 = $("#textRow").val();
+var textnr7 = $("#textCol").val();
+
+
+var theCode = textnr0 + '<br><textarea name="'+textnr1+'" id="'+textnr1+'" class="'+textnr2+'" rows="'+textnr6+'" cols="'+textnr7+'">'+textnr5+'</textarea>';
+
+
+$("#addedContent").append(theCode+"<br>" );
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr4textarea()
+{
+
+	hideAllInputs();
+
+	var inputNames = ["#value1","#class1","#id1","#text1","#row1","#col1"];
+	
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+			$(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "textarea";
+	$("#elementSelected").text(selectedVal);
+}
+
+
+
+function nr5Check()
+{
+
+var selectedVal = "checktext";
+
+var textnr0 = $("#textName").val();
+var textnr1 = $("#textId").val();
+var textnr2 = $("#textClass").val(); 
+var textnr5 = $("#textValue").val();
+
+
+var theCode = '<input type="radio" name="'+textnr5+'" value="'+textnr5+'" id="'+textnr1+'" class="'+textnr2+'"> '+textnr0+'<br>';
+
+
+$("#addedContent").append(theCode);
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr5check()
+{
+
+	hideAllInputs();
+
+	var inputNames = ["#class1","#id1","#text1","#value1"];
+	
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+			$(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "checktext";
+	$("#elementSelected").text(selectedVal);
+}
+
+
+
+
+//drop down box
+function nr6dropdown()
+{
+
+var selectedVal = "dropdown";
+
+var textnr0 = $("#textName").val();
+
+var textnr8 = $("#textStart").val(); 
+var textnr9 = $("#textFinish").val();
+var textnr10 = $("#textNumber3").val();
+
+var theCode = '<select name="'+textnr0+'"><option value="'+textnr8+'" id="'+textnr8+'" class="'+textnr8+'">'+textnr8+'</option><option value="'+textnr9+' id="'+textnr9+'" class="'+textnr9+'">'+textnr9+'</option><option value="'+textnr10+' id="'+textnr10+'" class="'+textnr10+'">'+textnr10+'</option></select><br>';
+
+
+$("#addedContent").append(theCode);
+$("#addedContent2").append(escapeHtml(theCode)+"<br><br>");
+
+}
+
+function setNr6dropdown()
+{
+	hideAllInputs();
+
+	var inputNames = ["#text1","#start1","#finish1","#number31"];
+	
+	var arrayLength = inputNames.length;
+		for (var i = 0; i < arrayLength; i++) 
+		{
+			$(inputNames[i]).show("slow");
+		}
+
+	var selectedVal = "dropdown";
+	$("#elementSelected").text(selectedVal);
+}
+//Main Function
+//#########################################################
+//#####################################################################################
+//#####################################################################################
+//#####################################################################################
+function checkSelectedItem()
+{
+    var arbitraryClearNames = ["button", "inputbox","headingtext","textarea","checktext","dropdown"];
+
+    var arrayLength = arbitraryClearNames.length;
+
+    var selectedVal = $("#elementSelected").text();
+
+	for (var i = 0; i < arrayLength; i++) 
+	{
+		//button
+		if(arbitraryClearNames[0] === selectedVal)
+		{
+			nr1Button();
+			i = arrayLength;
+		}
+		
+		//inputbox
+		if(arbitraryClearNames[1] === selectedVal)
+		{
+			nr2inputbox();
+			i = arrayLength;
+		}
+		
+		//heading
+		if(arbitraryClearNames[2] === selectedVal)
+		{
+			nr3Heading();
+			i = arrayLength;
+		}
+		
+		//textarea
+		if(arbitraryClearNames[3] === selectedVal)
+		{
+			nr4textarea();
+			i = arrayLength;
+		}
+		
+		//checkbox
+		if(arbitraryClearNames[4] === selectedVal)
+		{
+			nr5Check();
+			i = arrayLength;
+		}
+		
+		//dropdown
+		if(arbitraryClearNames[5] === selectedVal)
+		{
+			nr6dropdown();
+			i = arrayLength;
+		}
+	}
+
+}
+
+function hideAllInputs()
+{
+    var inputNames = ["#value1", "#imageURL1", "#function1","#class1","#id1","#text1","#row1","#col1","#start1","#finish1","#number31"];
+    var arrayLength = inputNames.length;
+
+	for (var i = 0; i < arrayLength; i++) 
+	{
+		$(inputNames[i]).hide();
+	}
+}
+
+
+//END#####################################################################################
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+</script>
+</body>
+
+</html>
