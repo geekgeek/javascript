@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>MyTitle</title>
+
+<style>
+#inputbox1
+{
+	color:red;
+}
+</style>
+
+</head>
+
+<body>
+<h1>realtime html editor</h1>
+
+<div id="first">
+    
+</div>
+
+<div id="form2">
+
+<br><hr><input type="button" onclick="listAllValues()" value="listAllValues">
+<input type="button" onclick="addCodeToListBox()" value="addCodeToListBox">
+</div>
+
+<div id="form1">
+    
+</div>
+
+add:<input type="text" id="inputbox1" class="" name="inputbox1" value="inputbox1">
+<input type="button" onclick="addNewTextbox()" value="add">
+<input type="button" onclick="removeItemFromArray()" value="-">
+
+<hr>
+<div id="added">
+<select name="id1" id="dropit">
+
+</select>
+
+</div>
+<script>
+
+//STARTUP FIRST:
+$( document ).ready(function() { 
+  startUpCode();
+});
+
+//START CODE:
+function startUpCode() 
+{
+listAllValues();
+addCodeToListBox();
+}
+
+
+var inputNames = ["value1", "imageURL1", "function1"];
+
+    function listAllValues()
+    {
+        $("#form1").text("");
+		
+            var arrayLength = inputNames.length;
+        
+        	for (var i = 0; i < arrayLength; i++) 
+        	{
+        		$("#form1").append('<input type="text" id="'+inputNames[i]+'" class="" name="'+inputNames[i]+'" value="'+inputNames[i]+'"><br>');
+        	}
+        
+    }
+    
+    function addNewTextbox()
+    {
+        $("#form1").text("");
+        
+        var inputb1 = $("#inputbox1").val();
+         inputNames.push(inputb1);
+         
+                     var arrayLength = inputNames.length;
+        
+        	for (var i = 0; i < arrayLength; i++) 
+        	{
+        		$("#form1").append('<br><input type="text" id="'+inputNames[i]+'" class="" name="'+inputNames[i]+'" value="'+inputNames[i]+'">');
+        	}
+			addCodeToListBox();
+    }
+	
+	function addCodeToListBox()
+	{
+		$("#dropit").text("");
+	
+		 var arrayLength = inputNames.length;
+        
+		for (var x = 0; x < 1; x++) {
+		
+        	for (var i = 0; i < arrayLength; i++) 
+        	{
+
+        		$("#dropit").append('<option value="'+inputNames[i]+'">'+inputNames[i]+'</option>');
+		
+        	}
+
+		}
+
+		
+	}
+	
+	function removeItemFromArray()
+	{
+		 inputNames.pop(inputNames.length);
+		 
+		 addCodeToListBox();
+		 listAllValues();
+		 
+	}
+    
+</script>
+</body>
+
+</html>
