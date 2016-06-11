@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>MyTitle</title>
+
+<style>
+</style>
+
+</head>
+
+<body>
+
+<h1>realtime html editor</h1>
+<input type="button" value="Button" onclick="listAllValues()"><br>
+
+<div id="first">
+    
+</div>
+
+<script>
+
+
+function listAllValues()
+{
+	var appendText = []; //We can define an array here if you need to play with the results in order or just use a string otherwise.
+
+
+	//First val
+	appendText.push('<select name="id1" id="dropit">');
+	
+	
+	for (var i = 1; i < 4; i++) 
+	{
+		appendText.push('<option value="inputbox1">inputbox1</option>'); 
+	}
+	
+	
+	//last val:
+	appendText.push('</select>');
+
+	appendText = appendText.join(" ");
+	
+	//Add to div:
+	$("#first").append(appendText);
+}
+    
+	
+	
+</script>
+</body>
+
+</html>
