@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH BRACKETS</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+        
+  <table>
+      <div>
+      <input type="button" onclick="theButtonClickedFunc1()" value="Click me">
+      </div>
+      
+          <tr>
+            <th id="mainLogo"><img src="http://www.w3schools.com/images/colorpicker.gif" alt="Mountain View" style="width:48px;height:48px;"></th>
+            <th id="mainLinks">Link 1 Link2 Link 1 Link2 Link 1 Link2 Link 1 Link2 Link 1 Link2 Link 1 Link2</th>
+
+          </tr>
+      
+          <tr>
+            <td>Month</td>
+            <td>Savings</td>
+          </tr>
+      
+          <tr>
+            <td>Footer 1</td>
+            <td>Footer 2</td>
+          </tr>
+      
+</table>
+    <script>
+        var lineLinkNames = ["link1","link2","link3"];
+        var lineLinkAdresses = ["http://stackoverflow.com/","http://www.w3schools.com/tags/att_td_colspan.asp"];
+        
+        var storageOfJObjects = [];
+        
+        /*
+        var myLinks = 
+        {
+            linkName:"link1", 
+            linkAdress:"http://stackoverflow.com/"
+        };
+        
+         */
+        
+    //The data arrangements/blueprint: Object creator. The definition of what the object will contain
+        function creatorOfmyLinks(Name, Adress) 
+        {
+            this.linkName = Name;
+            this.linkAdress = Adress;
+            
+            storageOfJObjects.push(this);
+
+        }
+
+        
+        
+    //The data creation: The Place where the definition of each objects are created
+        function controlLinkManufactory()
+        {
+            var link1 = new creatorOfmyLinks("link1", "www.google.com");
+            var link2 = new creatorOfmyLinks("link2", "www.yahoo.com");
+            var link3 = new creatorOfmyLinks("link3", "www.stackowerflow.com");
+            var link4 = new creatorOfmyLinks("link4", "www.tek.com");
+            
+
+        }
+        
+        
+    //The data loop: The machine where creates each object
+        function loopThroughAnArray(thechosenArray)
+        {
+            var myStringArray = thechosenArray;
+            var arrayLength = myStringArray.length;
+            
+            for (var i = 0; i < arrayLength; i++) 
+            {
+                alert(myStringArray[i].linkName);
+                alert(myStringArray[i].linkAdress);
+            }
+        }
+        
+    //Button clicked
+        function theButtonClickedFunc1()
+        {
+            controlLinkManufactory();
+            
+             alert(storageOfJObjects.length);
+            loopThroughAnArray(storageOfJObjects);
+        }
+    </script>
+    </body>
+</html>
