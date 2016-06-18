@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Title</title>
+        <meta name="description" content="This is the description of the page">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+<style>
+table, th, td 
+{
+    border: 4px solid rgba(59, 48, 48, 0.32);
+}
+</style>
+        
+  <table>
+      <div>
+      <input type="button" onclick="theButtonClickedFunc1()" value="Click me">
+          <input type="button" onclick="contenttheButtonClickedFunc1()" value="Click me content">
+      </div>
+      
+          <tr>
+            <th id="mainLogo"></th>
+            <th id="mainLinks"></th>
+
+          </tr>
+      
+          <tr>
+            <td id="leftSideBar1"></td>
+            <td id="mainContentAdder">
+                <h1 id="thisheadline1"></h1>
+                <br>
+                <hr>
+            </td>
+          </tr>
+      
+          <tr>
+            <td id="thisFooterLeft"></td>
+            <td id="thisFooterMain"></td>
+          </tr>
+      
+</table>
+    <script>
+
+// START UP PAGE CODE:
+//###################################################################
+//###################################################################
+//###################################################################
+        //STARTUP FIRST:
+        $( document ).ready(function() { 
+          startUpCode();
+        });
+
+        //START CODE:
+        function startUpCode() 
+        {
+
+            theButtonClickedFunc1();
+            contenttheButtonClickedFunc1();
+            
+            theStandardDataView();
+
+        }
+// JUST SOME STANDARD DATA CREATOR:
+//###################################################################
+//###################################################################
+//###################################################################
+        var myStandardData = 
+        {
+            logoUrl:"http://icons.iconarchive.com/icons/graphicloads/100-flat/256/zoom-search-2-icon.png",
+            theSitesHeadline:"HEADLINE 1",
+            theleftSideBar:"Left sidebar here ",
+            footerLeft:"this is footer left",
+            footerMain:"this is the normal footer text"
+            
+        };
+        
+        
+        function theStandardDataView()
+        {
+            var addLogo = '<img src="'+myStandardData.logoUrl+'" alt="Mountain View" style="width:128px;height:128px;">';
+            
+            $("#mainLogo").append(addLogo);
+            $("#thisFooterLeft").append(myStandardData.footerLeft);
+            $("#thisFooterMain").append(myStandardData.footerMain);
+            $("#leftSideBar1").append(myStandardData.theleftSideBar);
+            $("#thisheadline1").append(myStandardData.theSitesHeadline);
+        }
+        
+        
+        
+// LINK CREATOR:
+//###################################################################
+//###################################################################
+//###################################################################
+        var storageOfJObjects = [];
+        
+        /*
+        var myLinks = 
+        {
+            linkName:"link1", 
+            linkAdress:"http://stackoverflow.com/"
+        };
+        
+         */
+        
+    //The data arrangements/blueprint: Object creator. The definition of what the object will contain
+        function creatorOfmyLinks(Name, Adress) 
+        {
+            this.linkName = Name;
+            this.linkAdress = Adress;
+            
+            storageOfJObjects.push(this);
+
+        }
+
+        
+        
+    //The data creation: The Place where the definition of each objects are created
+        function controlLinkManufactory()
+        {
+            var link1 = new creatorOfmyLinks("google", "https://www.google.com");
+            var link2 = new creatorOfmyLinks("yahoo", "https://www.yahoo.com");
+            var link3 = new creatorOfmyLinks("ebay", "http://ebay.com/");
+            var link4 = new creatorOfmyLinks("amazon", "http://amazon.com/");
+            
+
+        }
+        
+        
+    //The data loop: The machine where creates each object
+        function loopThroughAnArray(thechosenArray)
+        {
+            var myStringArray = thechosenArray;
+            var arrayLength = myStringArray.length;
+            
+            for (var i = 0; i < arrayLength; i++) 
+            {
+                var x =  '<a href="'+myStringArray[i].linkAdress+'">'+myStringArray[i].linkName+'</a>' ;
+                var z = " -- ";
+                $("#mainLinks").append(x + z);
+            }
+        }
+        
+    //Button clicked
+        function theButtonClickedFunc1()
+        {
+            controlLinkManufactory();
+            
+            theLengthOfArr = storageOfJObjects.length;
+            
+            loopThroughAnArray(storageOfJObjects);
+        }
+//###################################################################
+//###################################################################
+//###################################################################
+        
+        
+// CONTENT CREATOR:
+//###################################################################
+//###################################################################
+//###################################################################
+       var storageOfJObjectsContent = [];
+        
+        /*
+        var myLinks = 
+        {
+            contentHeading:"heading1", 
+            contentContent:"<p>some content to be added</p>"
+        };
+        
+         */
+        
+    //The data arrangements/blueprint: Object creator. The definition of what the object will contain
+        function creatorOfmyContent(Header, Content) 
+        {
+            this.contentHeader = Header;
+            this.contentContent = Content;
+            
+            storageOfJObjectsContent.push(this);
+
+        }
+
+        
+        
+    //The data creation: The Place where the definition of each objects are created
+        function contentcontrolLinkManufactory()
+        {
+            var content1 = new creatorOfmyContent("<h2>heading 1</h2>", "<p>some content to be added1</p>");
+            var content2 = new creatorOfmyContent("heading 2", "<p>some content to be added2</p>");
+            var content3 = new creatorOfmyContent("heading 3", "<p>some content to be added3 some content to be added3</p>");
+
+        }
+        
+        
+    //The data loop: The machine where creates each object
+        function contentloopThroughAnArray(thechosenArray)
+        {
+            var myStringArray = thechosenArray;
+            var arrayLength = myStringArray.length;
+            
+            for (var i = 0; i < arrayLength; i++) 
+            {
+                var x = myStringArray[i].contentHeader;
+                var y = myStringArray[i].contentContent;
+                var z = '<hr>';
+                $("#mainContentAdder").append(x + y + z);
+            }
+        }
+        
+    //Button clicked
+        function contenttheButtonClickedFunc1()
+        {
+            contentcontrolLinkManufactory();
+            
+            theLengthOfArr = storageOfJObjectsContent.length;
+            
+            contentloopThroughAnArray(storageOfJObjectsContent);
+        }
+
+    </script>
+    </body>
+</html>
