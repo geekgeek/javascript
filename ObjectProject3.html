@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Title</title>
+        <meta name="description" content="This is the description of the page">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+<style>
+table, th, td 
+{
+    border: 4px solid rgba(59, 48, 48, 0.32);
+}
+</style>
+        
+  <table>
+      <div>
+      <input type="button" onclick="theButtonClickedFunc1()" value="Click me">
+          <input type="button" onclick="contenttheButtonClickedFunc1()" value="Click me ">
+      </div>
+      
+          <tr>
+            <th id="mainLogo"></th>
+            <th id="mainLinks"></th>
+
+          </tr>
+      
+          <tr>
+            <td id="leftSideBar1"></td>
+            <td id="mainContentAdder">
+                <h1 id="thisheadline1"></h1>
+                <br>
+                <hr>
+            </td>
+          </tr>
+      
+          <tr>
+            <td id="thisFooterLeft"></td>
+            <td id="thisFooterMain"></td>
+          </tr>
+      
+</table>
+    <script>
+
+// START UP PAGE CODE:
+//###################################################################
+//###################################################################
+//###################################################################
+        //STARTUP FIRST:
+        $( document ).ready(function() { 
+          startUpCode();
+        });
+
+        //START CODE:
+        function startUpCode() 
+        {
+
+
+
+        }
+// JUST SOME STANDARD DATA CREATOR:
+//###################################################################
+//###################################################################
+//###################################################################
+        
+        //Inputbox creation
+        function theStandardDataView(dddDiv,ddvalue,ddclass,ddid,text)
+        {
+            this.addtodiv = dddDiv;
+            
+            this.mainValue = ddvalue;
+            this.mainClass = ddclass;
+            this.mainId = ddid;
+            this.maintext = text;
+            
+            var target = this.maintext+'<br><input type="text" id="'+this.mainId+'" class="'+this.mainClass+'" name="inputbox" value="'+this.mainValue+'"><br>';
+            
+            //Constructor
+            this.funx1 = Function()
+            {
+
+                $("#"+this.addtodiv).append(target);
+            }
+            
+            //Normal func
+            this.helloFunc = function(xbar)
+            {
+                return "<hr>i am normal func <br>" + xbar;
+            }
+            
+        };
+        
+        var inp1 = new theStandardDataView("thisFooterLeft","val1","class1","ddid1","sometext1");
+        var inp2 = new theStandardDataView("thisFooterLeft","val1","class1","ddid1","sometext2");
+        var inp3 = new theStandardDataView("thisFooterLeft","val1","class1","ddid1","sometext3");
+        
+        
+        var fffnormal = inp2.helloFunc("Hello world2");
+        
+        $("#"+inp3.addtodiv).append(fffnormal);
+
+//###################################################################
+//###################################################################
+//###################################################################
+
+
+    </script>
+    </body>
+</html>
