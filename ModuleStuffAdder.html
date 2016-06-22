@@ -1,0 +1,93 @@
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--MODULE STARTS HERE -->
+<!--INCLUDE ALL THE JAVASCRIPT FILES! -->
+<input type="button" value="show/hide" onclick="moduleToggleShowHide()">
+
+
+<div id="moduleStuffAdder">
+
+	<input type="text" name="firstname" id="dddInpt6">
+	<input type="button" value="add" onclick="addAVal()">
+	<input type="button" value="del" onclick="delAVal()">
+
+
+<div id="addedCode">
+</div>
+
+</div>
+<!--MODULE ENDS HERE -->
+
+<script>
+
+var addedArray = [];
+
+
+
+
+function arrayAdd()
+{
+	var codeToAdd = $("#dddInpt6").val();
+	addedArray.push(codeToAdd);
+}
+
+function arrayDelete()
+{
+	addedArray.pop();
+}
+
+function deleteAddDiv()
+{
+	$("#addedCode").text("");
+}
+
+function arrayLoop()
+{
+    deleteAddDiv();
+
+	var arrayLength = addedArray.length;
+	
+	for (var i = 0; i < arrayLength; i++) 
+	{
+		$("#addedCode").append("<br>"+i+"  "+addedArray[i]);	
+	}
+}
+
+//BUTTONS
+function addAVal()
+{
+
+	arrayAdd();
+	arrayLoop();
+	
+	
+}
+
+function delAVal()
+{
+	arrayDelete();
+	arrayLoop();
+	
+	
+}
+
+
+function moduleToggleShowHide()
+{
+$("#moduleStuffAdder").toggle("slow");	
+	
+	
+}
+//END BUTTONS
+
+
+
+
+
+</script>
+</body>
+</html>
