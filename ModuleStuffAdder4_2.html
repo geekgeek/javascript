@@ -1,0 +1,204 @@
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--MODULE STARTS HERE -->
+<!--INCLUDE ALL THE JAVASCRIPT FILES! -->
+<input type="button" value="show/hide" onclick="button3OnClicked()">
+
+<div id="moduleStuffAdder">
+<hr>
+	<select id="modeSelector">
+		<option value="0">Edit</option>
+		<option value="1">Normal</option>
+	</select>
+<input type="button" value="ChangeMode" onclick="btnfullChangeMode()">
+<hr>
+
+	<input type="text" name="firstname" id="dddInpt6">
+	<input type="button" value="add" onclick="button1OnClicked()">
+	<input type="button" value="del" onclick="button2OnClicked()">
+
+
+<div id="addedCode">
+</div>
+
+</div>
+<!--MODULE ENDS HERE -->
+
+<script>
+
+var addedArray = [];
+
+
+
+//ArrayRelated functions:
+function arrayAdd()
+{
+	var codeToAdd = $("#dddInpt6").val();
+	addedArray.push(codeToAdd);
+}
+
+function arrayDelete()
+{
+	addedArray.pop();
+}
+
+
+
+function arrayLoop()
+{
+    deleteAddDiv();
+
+	var arrayLength = addedArray.length;
+	
+	for (var i = 0; i < arrayLength; i++) 
+	{
+
+
+		var moveDownButton = '<input type="button" value="+" onclick="BTNarrDown('+i+')">';
+		
+		var moveUpButton = '<input type="button" value="-" onclick="BTNarrUp('+i+')">';
+		
+		var editSpace = '<textarea id="editbox'+i+'">'+addedArray[i]+'</textarea>';
+		
+		var editButton = '<input type="button" value="Edit" onclick="insideBtn_arrayEditSpecific('+i+')">';
+		var editModule = editSpace + editButton;
+		
+		var delSpecificd = '<input type="button" value="x" onclick="insideButtononclick_arrayDeleteSpecific('+i+')">';
+		
+		
+		$("#addedCode").append("<br>"+addedArray[i]+"  ");
+		
+		if(btnChangeModeoption() === 0)
+		{
+			$("#addedCode").append(delSpecificd+moveDownButton+moveUpButton+ editModule+i);
+		}
+	
+	}
+}
+
+//BUTTONS RELATED FUNCTIONS
+function button1OnClicked()
+{
+
+	arrayAdd();
+	arrayLoop();
+	
+	
+}
+
+function button2OnClicked()
+{
+	arrayDelete();
+	arrayLoop();
+	
+	
+}
+
+function button3OnClicked()
+{
+	moduleToggleShowHide();
+}
+
+function insideButtononclick_arrayDeleteSpecific(selected)
+{
+	addedArray.splice(selected,1);
+	arrayLoop();
+}
+
+function insideBtn_arrayEditSpecific(selectedval)
+{
+	var theinputSelected = "editbox"+ selectedval;
+	
+	var selectedInputValFinal = $("#"+theinputSelected).val();
+	
+	addedArray[selectedval] = selectedInputValFinal;
+	
+	arrayLoop();
+	
+}
+
+
+function BTNarrUp(selectedVal)
+{
+	var currentPos0 = selectedVal;
+	var currentPos1 = selectedVal+1;
+	
+	if(currentPos1 < addedArray.length)
+	{
+		arraymove(addedArray,currentPos0,currentPos1);
+		
+	}
+	
+	arrayLoop();
+}
+
+
+function BTNarrDown(selectedVal)
+{
+	var currentPos0 = selectedVal;
+	var currentPos1 = selectedVal-1;
+	
+	if(currentPos1 > -1)
+	{
+		arraymove(addedArray,currentPos0,currentPos1);
+		
+	}
+	
+	arrayLoop();
+}
+
+
+function btnChangeModeoption()
+{
+	var modeArrVal = $("#modeSelector").val();
+
+		if (modeArrVal === "0")
+		{
+			return 0;
+		}
+
+		if(modeArrVal === "1")
+		{
+			return 1;
+		}
+
+}
+
+
+function btnfullChangeMode()
+{
+btnChangeModeoption();
+arrayLoop();
+}
+
+//DIV RELATED FUNCTIONS
+function moduleToggleShowHide()
+{
+	$("#moduleStuffAdder").toggle("slow");	
+}
+
+
+function deleteAddDiv()
+{
+	$("#addedCode").text("");
+}
+
+
+
+//OTHER FUNCTIONS
+function arraymove(arr, fromIndex, toIndex) 
+{
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
+}
+
+
+
+</script>
+</body>
+</html>
