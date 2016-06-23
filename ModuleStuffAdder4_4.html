@@ -1,0 +1,264 @@
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+
+<!--MODULE STARTS HERE -->
+<!--INCLUDE ALL THE JAVASCRIPT FILES! -->
+<input type="button" value="show/hide" onclick="button3OnClicked()">
+<div class="container"> <!--BOOTSTRAP#####################################################-->
+<div id="moduleStuffAdder">
+<hr>
+	<select id="modeSelector">
+		<option value="0">Edit</option>
+		<option value="1">Normal</option>
+	</select>
+<input type="button" value="ChangeMode" onclick="btnfullChangeMode()">
+<hr>
+
+<textarea id="dddInpt6"></textarea>
+	<!--   <input type="text" name="firstname" id="dddInpt6">   -->
+	<input type="button" value="add" onclick="button1OnClicked()">
+	<input type="button" value="del" onclick="button2OnClicked()">
+
+
+<div id="addedCode">
+</div>
+
+
+
+<div id="rawCodeAdd"></div>
+
+<br><br>
+
+<style>
+
+#addedCode
+{
+	border:1px solid black;
+	padding:10px;
+}
+
+#rawCodeAdd
+{
+	border:1px solid black;
+	padding:10px;
+}
+</style>
+</div><!--MODULE ENDS HERE -->
+</div><!--BOOTSTRAP#####################################################-->
+<script>
+
+var addedArray = [];
+
+//OTHER RELATED
+//####################################
+//####################################
+//####################################
+var bootstrap1 = 
+{
+	protoBefore:"<style>",
+	protoStart:"{",
+	protoEnd:"}",
+	protoAfter:"</style>"
+}
+
+
+function deleteRawCodeDiv()
+{
+	$("#rawCodeAdd").text("");
+}
+
+
+//ArrayRelated functions:
+//####################################
+//####################################
+//####################################
+function arrayAdd()
+{
+	var codeToAdd = $("#dddInpt6").val();
+	addedArray.push(codeToAdd);
+}
+
+function arrayDelete()
+{
+	addedArray.pop();
+}
+
+
+
+function arrayLoop()
+{
+    deleteAddDiv();
+	deleteRawCodeDiv();
+	
+	var arrayLength = addedArray.length;
+	
+	for (var i = 0; i < arrayLength; i++) 
+	{
+
+
+		var moveDownButton = '<input type="button" value="+" onclick="BTNarrDown('+i+')">';
+		
+		var moveUpButton = '<input type="button" value="-" onclick="BTNarrUp('+i+')">';
+		
+		var editSpace = '<textarea id="editbox'+i+'">'+addedArray[i]+'</textarea>';
+		
+		var editButton = '<input type="button" value="Edit" onclick="insideBtn_arrayEditSpecific('+i+')">';
+		var editModule = editSpace + editButton;
+		
+		var delSpecificd = '<input type="button" value="x" onclick="insideButtononclick_arrayDeleteSpecific('+i+')">';
+		
+		
+		$("#addedCode").append("<br>"+addedArray[i]+"  ");
+		
+		$("#rawCodeAdd").append("<br><br>"+escapeHtml(addedArray[i]))
+		
+		if(btnChangeModeoption() === 0)
+		{
+			$("#addedCode").append(delSpecificd+moveDownButton+moveUpButton+ editModule+i);
+		}
+	
+	}
+}
+
+//BUTTONS RELATED FUNCTIONS
+//####################################
+//####################################
+//####################################
+function button1OnClicked()
+{
+
+	arrayAdd();
+	arrayLoop();
+	
+	
+}
+
+function button2OnClicked()
+{
+	arrayDelete();
+	arrayLoop();
+	
+	
+}
+
+function button3OnClicked()
+{
+	moduleToggleShowHide();
+}
+
+function insideButtononclick_arrayDeleteSpecific(selected)
+{
+	addedArray.splice(selected,1);
+	arrayLoop();
+}
+
+function insideBtn_arrayEditSpecific(selectedval)
+{
+	var theinputSelected = "editbox"+ selectedval;
+	
+	var selectedInputValFinal = $("#"+theinputSelected).val();
+	
+	addedArray[selectedval] = selectedInputValFinal;
+	
+	arrayLoop();
+	
+}
+
+
+function BTNarrUp(selectedVal)
+{
+	var currentPos0 = selectedVal;
+	var currentPos1 = selectedVal+1;
+	
+	if(currentPos1 < addedArray.length)
+	{
+		arraymove(addedArray,currentPos0,currentPos1);
+		
+	}
+	
+	arrayLoop();
+}
+
+
+function BTNarrDown(selectedVal)
+{
+	var currentPos0 = selectedVal;
+	var currentPos1 = selectedVal-1;
+	
+	if(currentPos1 > -1)
+	{
+		arraymove(addedArray,currentPos0,currentPos1);
+		
+	}
+	
+	arrayLoop();
+}
+
+
+function btnChangeModeoption()
+{
+	var modeArrVal = $("#modeSelector").val();
+
+		if (modeArrVal === "0")
+		{
+			return 0;
+		}
+
+		if(modeArrVal === "1")
+		{
+			return 1;
+		}
+
+}
+
+
+function btnfullChangeMode()
+{
+	btnChangeModeoption();
+	arrayLoop();
+}
+
+//DIV RELATED FUNCTIONS
+//####################################
+//####################################
+//####################################
+function moduleToggleShowHide()
+{
+	$("#moduleStuffAdder").toggle("slow");	
+}
+
+
+function deleteAddDiv()
+{
+	$("#addedCode").text("");
+}
+
+
+
+//OTHER FUNCTIONS
+//####################################
+//####################################
+//####################################
+function arraymove(arr, fromIndex, toIndex) 
+{
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
+}
+
+
+//Escape HTML
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+};
+
+</script>
+</body>
+</html>
