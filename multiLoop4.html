@@ -1,0 +1,270 @@
+<html>
+	<head>
+		<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    
+    </head>
+	<body>
+	<!--MODULE STARTS HERE: -->
+	<div class="container">
+			<br>
+
+			<input type="button" value="add" onclick="addMultiArrValues()">
+			<input type="button" value="del" onclick="delmultiArray()">
+        
+			<hr>
+			<input type="text" name="firstname" id="textbox1">  <br>
+		    <textarea id="textarea1" rows="5" cols="100"></textarea><code id="numberAdded">0</code>
+            <br><hr>
+			
+			<div id="addedCode">
+                
+                <ul class="nav navbar-nav navbar-left" id="mainSuperNavigation">
+                    <li><input class="btn btn-primary" type="button" value="All" onclick="showAllContent()"></li>
+                </ul>
+                
+                <br><hr>
+                <div id="someArticles">
+
+                </div>
+                
+            </div>
+        
+        
+        <div id="outputCode">
+            
+        </div>
+
+	</div>
+		<hr>
+		<br>
+		<br>
+
+		
+		
+		
+		<script>
+        
+        //MODELS
+        //#####################################################
+        //#####################################################
+        //#####################################################
+            
+		//Storage of object name
+		var addedArray = [];
+
+		
+		var allmultiArray = 
+		{
+			someText1:"someText",
+			someText2:"someText2"
+		}
+		
+		//MultiArr creation
+		var addMultiArray = function(var1,var2)
+		{
+			this.someText1 = var1;
+			this.someText2 = var2;
+			
+			addedArray.push(this);
+		}
+        //#####################################################
+        //#####################################################
+        
+		//Creation of new arr values like array.push
+		function addMultiArrValues()
+		{
+		
+			var box1 = $("#textbox1").val();
+			var bigbox1 = $("#textarea1").val();
+			
+			new addMultiArray(box1,bigbox1);
+			
+			arrayLoop();
+		}
+
+		//Delete multi array
+		function delmultiArray()
+		{
+			addedArray.pop();
+			arrayLoop();
+		}
+    
+        function showAllContent()
+        {
+            var arrayLength = addedArray.length;
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                $("#uni"+i).show("slow");
+			}
+        }
+            
+        function showOnlyThis(unii)
+        {
+            
+            var arrayLength = addedArray.length;
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                
+                if(i === unii)
+                {
+                    $("#uni"+i).show("slow");
+                }
+                
+                if( i != unii)
+                {
+                    $("#uni"+i).hide();
+                }
+                
+
+				
+			}
+            
+        }
+            
+		//ArrayLoop:
+		function arrayLoop()
+		{
+            
+            $("#mainSuperNavigation").text("");
+            $("#someArticles").text("");
+            $("#outputCode").text("");
+
+            
+			var arrayLength = addedArray.length;
+			$("#numberAdded").text(arrayLength);
+            
+			for (var i = 0; i < arrayLength; i++) 
+			{
+				var val1 = addedArray[i].someText1;
+				var val2 = addedArray[i].someText2;
+				
+                
+                var linkadd = '<li><input class="btn btn-primary" type="button" value="'+ val1 +'" onclick="showOnlyThis('+i+')"></li>';
+                $("#mainSuperNavigation").append(linkadd);
+                
+                
+                var uniqueArticleIdentifier = '<div id ="uni' + i +'">';
+                $("#someArticles").append(uniqueArticleIdentifier+val2+"<hr></div>");
+                
+                //EDITMODE:
+                var modeEdit1 = '<input type="button" value="'+i+'" id="btn'+i+'" onclick="delSpecificArrValue('+i+');">';
+                $("#someArticles").append(modeEdit1);
+                
+                var modeEdit2 = '<input type="button" value="+" id="btn'+i+'" onclick="sortDownArrVal('+i+');">';
+                $("#someArticles").append(modeEdit2);
+
+                var modeEdit3 = '<input type="button" value="-" id="btn'+i+'" onclick="sortUpArrVal('+i+');">';
+                $("#someArticles").append(modeEdit3);
+                
+                var modeEdit4 = '<input type="button" value="Transfer" id="btn'+i+'" onclick="transferOneArrVal('+i+');">';
+                $("#someArticles").append(modeEdit4);
+                
+                var modeEdit5 = '<input type="button" value="Save" id="btn'+i+'" onclick="viewOneArrVal('+i+');">';
+                $("#someArticles").append(modeEdit5);
+                //</>
+			}
+            
+            var allContentShowButton = '<li><input class="btn btn-primary" type="button" value="All" onclick="showAllContent()"></li>';
+            $("#mainSuperNavigation").append(allContentShowButton);
+            
+            
+		}
+
+            //Edit mode second view:
+            function delSpecificArrValue(val)
+            {
+                addedArray.splice(val, 1);
+                arrayLoop();
+            }
+            
+            function sortDownArrVal(val)
+            {
+                if(val != 0)
+                {
+                var prevVal = val - 1;
+
+                    addedArray.move(prevVal, val);
+                    
+                }
+                arrayLoop();
+            }
+
+
+            function sortUpArrVal(val)
+            {
+                var prevVal = val + 1;
+                if(prevVal != addedArray.length)
+                {
+                    addedArray.move(prevVal, val);
+                    
+                }
+                
+                arrayLoop();
+            }
+
+            
+            function viewOneArrVal(val)
+                {
+                    var focusedArrVal = val;
+                    var focusedArrProperties = addedArray[val];
+                    
+                    addedArray[val].someText1 = $("#textbox1").val();
+                    addedArray[val].someText2 = $("#textarea1").val();
+                    
+                    arrayLoop();
+                }
+            
+            
+            function transferOneArrVal(val)
+                {
+                    var focusedArrVal = val;
+                    var focusedArrProperties = addedArray[val];
+                    
+                    $("#textbox1").val(addedArray[val].someText1);
+                    $("#textarea1").val(addedArray[val].someText2);
+                }
+            
+            
+            //Clones the added content code
+            function cloneMagic()
+            {
+                
+                var allInsideCode = $("#addedCode").html();
+                var formattx = escapeHtml(allInsideCode);
+                $("#outputCode").append(formattx);
+            }
+            
+            //Escape HTML
+            function escapeHtml(text) 
+            {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) 
+                {
+                    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+                });
+            };
+            
+            
+            //http://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+            Array.prototype.move = function (old_index, new_index) {
+                if (new_index >= this.length) {
+                    var k = new_index - this.length;
+                    while ((k--) + 1) {
+                        this.push(undefined);
+                    }
+                }
+                this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+                return this; // for testing purposes
+            };
+
+            
+            //##########################################################
+            //##########################################################
+            //##########################################################
+
+		</script>
+		<!--MODULE ENDS HERE -->
+	</body>
+</html>
