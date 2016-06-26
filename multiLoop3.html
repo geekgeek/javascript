@@ -1,0 +1,176 @@
+<html>
+	<head>
+		<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+    </head>
+	<body>
+	
+	<!--MODULE STARTS HERE: -->
+	<div class="container">
+			<br>
+
+			<input type="button" value="add" onclick="addMultiArrValues()">
+			<input type="button" value="del" onclick="delmultiArray()">
+			<hr>
+			<input type="text" name="firstname" id="textbox1">  <br>
+		    <textarea id="textarea1" rows="5" cols="100"></textarea><br><hr>
+			
+			<div id="addedCode">
+                
+                <ul class="nav navbar-nav navbar-left" id="mainSuperNavigation">
+                    <li><input class="btn btn-primary" type="button" value="All" onclick="showAllContent()"></li>
+                </ul>
+                
+                <br><hr>
+                <div id="someArticles">
+
+                </div>
+                
+            </div>
+        
+        
+        <div id="outputCode">
+            
+        </div>
+
+	</div>
+		<hr>
+		<br>
+		<br>
+
+		
+		
+		
+		<script>
+        
+        //MODELS
+        //#####################################################
+        //#####################################################
+        //#####################################################
+            
+		//Storage of object name
+		var addedArray = [];
+
+		
+		var allmultiArray = 
+		{
+			someText1:"someText",
+			someText2:"someText2"
+		}
+		
+		//MultiArr creation
+		var addMultiArray = function(var1,var2)
+		{
+			this.someText1 = var1;
+			this.someText2 = var2;
+			
+			addedArray.push(this);
+		}
+        //#####################################################
+        //#####################################################
+        
+		//Creation of new arr values like array.push
+		function addMultiArrValues()
+		{
+		
+			var box1 = $("#textbox1").val();
+			var bigbox1 = $("#textarea1").val();
+			
+			new addMultiArray(box1,bigbox1);
+			
+			arrayLoop();
+		}
+
+		//Delete multi array
+		function delmultiArray()
+		{
+			addedArray.pop();
+			arrayLoop();
+		}
+    
+        function showAllContent()
+        {
+            var arrayLength = addedArray.length;
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                $("#uni"+i).show("slow");
+			}
+        }
+            
+        function showOnlyThis(unii)
+        {
+            
+            var arrayLength = addedArray.length;
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                
+                if(i === unii)
+                {
+                    $("#uni"+i).show("slow");
+                }
+                
+                if( i != unii)
+                {
+                    $("#uni"+i).hide();
+                }
+                
+
+				
+			}
+            
+        }
+            
+		//ArrayLoop:
+		function arrayLoop()
+		{
+            
+            $("#mainSuperNavigation").text("");
+            $("#someArticles").text("");
+            $("#outputCode").text("");
+
+            
+			var arrayLength = addedArray.length;
+			
+			for (var i = 0; i < arrayLength; i++) 
+			{
+				var val1 = addedArray[i].someText1;
+				var val2 = addedArray[i].someText2;
+				
+                
+                var linkadd = '<li><input class="btn btn-primary" type="button" value="'+ val1 +'" onclick="showOnlyThis('+i+')"></li>';
+                $("#mainSuperNavigation").append(linkadd);
+                
+                
+                var uniqueArticleIdentifier = '<div id ="uni' + i +'">';
+                $("#someArticles").append(uniqueArticleIdentifier+val2+"<hr></div>");
+
+			}
+            
+            var allContentShowButton = '<li><input class="btn btn-primary" type="button" value="All" onclick="showAllContent()"></li>';
+            $("#mainSuperNavigation").append(allContentShowButton);
+            
+            
+		}
+
+            
+            //Clones the added content code
+            function cloneMagic()
+            {
+                
+                var allInsideCode = $("#addedCode").html();
+                var formattx = escapeHtml(allInsideCode);
+                $("#outputCode").append(formattx);
+            }
+            
+            //Escape HTML
+            function escapeHtml(text) {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) {
+                    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+                });
+            };
+		</script>
+		<!--MODULE ENDS HERE -->
+	</body>
+</html>
