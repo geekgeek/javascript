@@ -1,0 +1,46 @@
+<html>
+    <head>
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        <input type="button" onclick="AddToDrop()" value="Add">
+        <input type="text" id="infoBox1"><br>
+        <select id="someDropdown"></select>
+        
+        <script>
+            
+            var storageOfOptions = [];
+            
+            function AddToDrop()
+            {
+                var theTextBoxVal = $("#infoBox1").val();
+                
+                storageOfOptions.push(theTextBoxVal);
+
+                
+                showAllContent();
+            }
+
+            
+        //show all content
+        function showAllContent()
+        {
+            $("#someDropdown").text("");
+            
+            var arrayLength = storageOfOptions.length;
+            
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                $("#someDropdown").append('<option>'+storageOfOptions[i]+'</option>');
+			}
+        }
+            
+
+            
+        </script>
+    </body>
+</html>
