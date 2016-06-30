@@ -1,0 +1,94 @@
+<html>
+    <head>
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        
+        style id: <input type="text" id="infoBox1"><br>
+        css: <textarea id="infoBox2"></textarea><br>
+        <input type="button" onclick="AddToDrop()" value="Add">
+        
+        <div id="testing1">
+        <p>sddsf ds fsd  fds sd dsf dsf ds dsf dsf d fd sdf dsf </p>
+        </div>
+                <div id="testing2">
+        <p>sddsf ds fsd  fds sd dsf dsf ds dsf dsf d fd sdf dsf </p>
+        </div>
+        <br><hr>
+        <div id="added">
+        
+        </div>
+        
+        <div id="output">
+        
+        </div>
+        <script>
+            
+            var storageOfOptions = [];
+            var storageOfCSS = [];
+            
+            
+            function AddToDrop()
+            {
+                var theTextBoxVal = $("#infoBox1").val();
+                var theTextBoxVal2 = $("#infoBox2").val();
+                
+                storageOfOptions.push(theTextBoxVal);
+                
+                storageOfCSS.push(theTextBoxVal2);
+
+                
+                showAllContent();
+            }
+
+            
+        //show all content
+        function showAllContent()
+        {
+            $("#added").text("");
+            $("#output").text("");
+            
+            var arrayLength = storageOfOptions.length;
+            
+            $("#added").append("<style id='addStyle'>");
+            $("#output").append(escapeHtml("<style id='addStyle'>")+"<br><br>");
+            
+            for (var i = 0; i < arrayLength; i++) 
+			{
+                $("#addStyle").append('/**Added arr'+i+'+*/');
+                $("#addStyle").append('#'+storageOfOptions[i]);
+                $("#addStyle").append('{');
+                $("#addStyle").append(storageOfCSS[i]);
+                $("#addStyle").append('}');
+                
+                
+                $("#output").append(escapeHtml('/**Added arr'+i+'+*/')+"<br>");
+                $("#output").append(escapeHtml('#'+storageOfOptions[i])+"<br>");
+                $("#output").append(escapeHtml('{')+"<br>");
+                $("#output").append(escapeHtml(storageOfCSS[i])+"<br>");
+                $("#output").append(escapeHtml('}')+"<br><br>");
+			}
+            
+            $("#added").append("</style>");
+            $("#output").append(escapeHtml("</style>"));
+
+            
+        }
+            
+
+                    //Escape HTML
+            function escapeHtml(text) 
+            {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) 
+                {
+                    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+                });
+            };
+        </script>
+    </body>
+</html>
