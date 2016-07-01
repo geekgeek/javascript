@@ -1,0 +1,138 @@
+<html>
+    <head>
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+        
+        <script
+			  src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+			  integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
+			  crossorigin="anonymous"></script>
+		  <style>
+  #draggable1 { width: 50px; height: 50px;  }
+  #draggable2 { width: 50px; height: 50px;  }
+  #draggable3 { width: 50px; height: 50px;  }
+
+  </style>
+    </head>
+    
+    <body>
+
+<div id="container1">
+
+
+    
+</div>
+        
+        <input type="button" onclick="addToDivsAll()" value="StorePosition"><br>
+        <input type="text" id="textbox1"><br>
+        <textarea id="theAddedCode1"></textarea>
+        <input type="button" onclick="addTheVal()" value="addComponent">
+         <div id="codeSnippet"></div>
+        <div id="addedOutput"></div>
+        
+        <script>
+             //JQUERY UI:
+              $(function() 
+                {
+                showAllContent();
+              });
+            
+            var uiArray1 = [];
+            
+            
+            var allContentsStored = function(divId1,thesCode)
+            {
+                this.storedDivIds = divId1;
+                this.storeCodeContent = thesCode;
+                uiArray1.push(this);
+            }
+ 
+
+
+            //Add the val
+            function addTheVal()
+            {
+                var textboxnr1 = $("#textbox1").val();
+                var codeTextareaBox = $("#theAddedCode1").val();
+                
+                var toAdd = '<div id="'+textboxnr1+'" class="ui-widget-content">'+codeTextareaBox+'</div>';
+                $("#container1").append(toAdd);
+                
+                new allContentsStored("#"+textboxnr1,codeTextareaBox);
+                showAllContent();
+            }
+            
+            
+            //show all content
+            function showAllContent()
+            {
+                $("#codeSnippet").text("");
+
+                var arrayLength = uiArray1.length;
+
+                for (var i = 0; i < arrayLength; i++) 
+                {
+                    var storedDiv = uiArray1[i].storedDivIds;
+                    
+                    $(storedDiv).draggable();
+                    
+                    
+                }
+
+
+            }
+            
+            //ADD to div content
+            function addToDivsAll()
+            {
+                $("#codeSnippet").text("");
+
+                var arrayLength = uiArray1.length;
+
+                for (var i = 0; i < arrayLength; i++) 
+                {
+                    var storedDiv = uiArray1[i].storedDivIds;
+                    var storedContent = uiArray1[i].storeCodeContent;
+                    
+                    
+                    
+                    var dragVal = $(storedDiv).attr("style");
+
+                    var theStandardCode = '<div id="draggable" class="ui-widget-content" style="'+dragVal+'">'+storedContent+'</div>';
+                    var dragStyleCode = escapeHtml(theStandardCode);
+
+                    $("#codeSnippet").append(dragStyleCode+"<br><br>");
+                    
+                    
+                }
+            }
+            
+   
+            
+            
+            //END
+            
+            
+            
+    
+
+            //Escape HTML
+            function escapeHtml(text) 
+            {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) 
+                {
+                    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+                });
+            };
+            
+            
+
+            
+
+            
+        </script>
+    </body>
+</html>
