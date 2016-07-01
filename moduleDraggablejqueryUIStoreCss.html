@@ -1,0 +1,71 @@
+<html>
+    <head>
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+        
+        <script
+			  src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+			  integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
+			  crossorigin="anonymous"></script>
+		
+    </head>
+    
+    <body>
+
+        <div id="draggable" class="ui-widget-content">
+          <p>Drag me around</p>
+        </div>
+        
+        
+        <div id="codeSnippet"></div>
+        
+        
+        <input type="button" onclick="storeDragVal()" value="Add">
+        
+        <script>
+            
+            
+            //JQUERY UI:
+              $(function() 
+                {
+                $( "#draggable" ).draggable();
+              });
+            
+            function storeDragVal()
+            {
+                var dragVal = $("#draggable").attr("style");
+                alert(dragVal);
+                
+                var theStandardCode = '<div id="draggable" class="ui-widget-content" style="'+dragVal+'"><p>Drag me around</p></div>';
+                var dragStyleCode = escapeHtml(theStandardCode);
+                
+                $("#codeSnippet").append(dragStyleCode);
+                
+            }
+            
+            //END
+            
+            
+            
+    
+
+            //Escape HTML
+            function escapeHtml(text) 
+            {
+                'use strict';
+                return text.replace(/[\"&<>]/g, function (a) 
+                {
+                    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+                });
+            };
+            
+            
+
+            
+
+            
+        </script>
+    </body>
+</html>
