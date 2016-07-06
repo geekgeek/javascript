@@ -1,0 +1,26 @@
+
+
+
+<select id="modeEl" size="1">
+    <option value="abap">ABAP</option>
+    <option value="abc">ABC</option>
+    <option value="actionscript">ActionScript</option>
+</select>
+
+
+<script>
+
+displayResult();
+// TURN SELECT INTO JAVASCRIPT OBJECT    
+function displayResult() 
+    {
+    var x = document.getElementById("modeEl");
+    var txt = "All options: ";
+    var i;
+    for (i = 0; i < x.length; i++) 
+    {
+        txt = txt + "\n" + x.options[i].value+"1:" + '"'+x.options[i].value+'",';
+    }
+    alert(txt);
+}
+</script>
