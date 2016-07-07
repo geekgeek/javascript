@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+    
+    <h1>realtime html editor</h1>
+    <select onchange="whenChanging(this)">
+        <option>number1</option>
+        <option>number2</option>
+        <option>number3</option>
+        <option>number4</option>
+        <option>number5</option>
+    </select>
+    
+    <script>
+        function whenChanging(theitem)
+        {
+            alert(theitem.value);
+        }
+    </script>
+    
+</body>
+
+</html>
