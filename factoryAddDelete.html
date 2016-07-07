@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>hgjhg jhghgj</title>
+
+<style>
+#box1
+{
+    margin:30px;
+}
+</style>
+
+</head>
+
+<body>
+    
+<div id="box1">
+    <h2>Factory Adder</h2><br>
+    
+    <input type="button" value="Add" onclick="test1()">
+    <input type="text" value="" id="textbox1">
+    
+    <input type="button" value="Del" onclick="deleteLastFactoryItem()">
+    <br><hr>
+     
+    <div id=added></div>
+</div>
+
+
+<script>
+
+
+
+    var factory1 = [];
+    
+    
+    function test1()
+    {
+        var textb1 = $("#textbox1").val();
+        
+        factory1.push(textb1);
+        showAllInFactory();
+    }
+    
+    
+    function deleteLastFactoryItem()
+    {
+        factory1.pop();
+        showAllInFactory();
+    }
+    
+    
+    function showAllInFactory()
+    {
+        $("#added").text("");
+        
+        for (i = 0; i < factory1.length; i++) 
+        {
+            $("#added").append(factory1[i] + i +"<br>");
+        }
+    }
+    
+    
+    
+</script>
+
+</body>
+
+</html>
