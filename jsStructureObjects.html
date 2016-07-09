@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<h1>type in html code here</h1>
+<input type="button" value="click me" onclick="myMethods.meth1()">
+ <input type="button" value="click me" onclick="myMethods.meth2()">
+ 
+<div id="added">
+    
+</div>
+
+<script>
+
+var myModels = 
+{
+            data1: 'Hello Vue.js!',
+            data2:["car","boat","bicycle"],
+            data3:
+                  {
+                      nr1:"hello1",
+                      nr2:"hello2",
+                      nr3:"hello3"
+                  },
+            data4: [
+                      { nr1: 'number1' },
+                      { nr2: 'number2' },
+                      { nr3: 'number3' }
+                    ]
+}
+
+var myMethods = 
+{
+    meth1:function()
+    {
+         $("#added").append(myModels.data1);
+    },
+    
+    meth2:function()
+    {
+        $("#added").append(myModels.data2[0]);
+    },
+    
+    meth3:function()
+    {
+        $("#added").append(myModels.data3.nr1);
+    },
+    
+    meth4:function()
+    {
+        $("#added").append(myModels.data4[0].nr1);
+    }
+}
+</script>
+</body>
+
+</html>
