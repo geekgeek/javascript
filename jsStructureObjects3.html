@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<h1>type in html code here</h1>
+<input type="button" value="click" onclick="myModule1.mymethods.btnFunc1()">
+
+<input type="text" id="textbox1">
+
+<div id="added">
+    
+</div>
+
+<script>
+var myModule1  = 
+{
+    mymodels:
+    {
+        data1:[]
+    },
+    
+    mymethods:
+    {
+        btnFunc1:function()
+        {
+            var txtbox = $("#textbox1").val();
+            var length1 = myModule1.mymethods.getDataLength();
+            $("#added").append("<br>"+txtbox+ length1);
+            
+            
+            myModule1.mymodels.data1.push(txtbox);
+        },
+        
+        getDataLength:function()
+        {
+          var lengthData = myModule1.mymodels.data1.length;
+          
+          return lengthData;
+        }
+    }
+
+}
+
+
+
+
+</script>
+</body>
+
+</html>
