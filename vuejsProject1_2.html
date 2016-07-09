@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  
+    <title>MyTitle</title>
+    
+    <style>
+    
+    </style>
+    <script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+  
+  </head>
+  
+  <body>
+      
+    <div id="app">
+        
+        <!--SINGLE DATA TEST-->
+        <input v-model="data1">
+        {{data1}}
+        <hr>
+        {{data3.nr3}}
+        
+        <!--REPEAT TEST-->
+        <ol>
+            <li v-for="x in data2">{{x}} </li>
+        </ol>
+        <hr>
+        
+        <ol>
+            <li v-for="x in data3">{{x}} </li>
+        </ol>
+        <hr>
+        
+        <!--FUNCTION TEST-->
+        <input type="button" value="click me" v-on:click="button3Click()">
+        
+<hr>
+        
+    </div>
+    
+    <script>
+    var demo = new Vue
+    ({
+      el: '#app',
+      data: 
+          {
+            'data1': 'Hello Vue.js!',
+            'data2':["car","boat","bicycle"],
+            'data3':
+                  {
+                      nr1:"hello1",
+                      nr2:"hello2",
+                      nr3:"hello3"
+                  }
+          },
+      methods:
+            {
+                button1Click: function()
+                {
+                    alert("btn 1 click");
+                },
+                
+                button2Click: function()
+                {
+                    alert("btn 2 click");
+                },
+                
+                button3Click: function()
+                {
+                   alert("btn 3 click");
+                }
+        
+            }
+    }) 
+    </script>
+  </body>
+
+</html>
