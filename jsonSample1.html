@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<h1>type in html code here</h1>
+<input type="text" value="textbox1" id="textbox1"><br>
+
+<input type="button" value="click me" onclick="test1()">
+
+<script>
+var employees = 
+[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter","lastName": "Jones"}
+]; 
+
+function test1()
+{
+    var x = employees[2].firstName;
+    var z = employees[2].lastName;
+    alert(x + z);
+}
+</script>
+</body>
+
+</html>
