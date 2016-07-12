@@ -1,0 +1,119 @@
+<html>
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type = "text/css"/>
+  
+  
+  <style>
+  .mainBox{
+    border:solid 1px;
+    padding:2px;
+    overflow:scroll; 
+    height:auto;
+    max-width:100%;
+  }
+  
+  .mainBox{
+      font-family:"Verdana, Geneva, sans-serif";
+  }
+  textarea {
+    max-width: 99%;
+    background-color:white;
+    color:black;
+  }
+  </style>
+  
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+<div class="container">
+    <br><br>
+    <h2>Form builder</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="calc">
+				<!--KNOCKOUT CODE:-->
+                <div class="form-group" id="mainNav1" data-bind="foreach: people">
+
+			<input data-bind="value: firstName" class="btn btn-success" type="button">
+                     
+                </div>
+				<!--END:-->
+            </form>
+        </div>
+            
+            
+    <div class="row">
+        <div class="col-md-12">
+            <div id="mainBoxDiv">
+                   <form class="mainBox">
+                    
+                    
+                   </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+            
+              <div class="col-md-12">
+                <div class="added" id="addedId">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<table>
+    <thead>
+        <tr><th>First name</th><th>Last name</th></tr>
+    </thead>
+	<!--KNOCKOUT CODE:-->
+    <tbody data-bind="foreach: people">
+        <tr>
+            <td data-bind="text: firstName"></td>
+            <td data-bind="html: code"></td>
+        </tr>
+    </tbody>
+	<!--END-->
+</table>
+
+
+<script>
+
+//KNOCKOUT CONVERSION:
+// Here's my data model
+	
+var ViewModel = function()
+{
+	var self= this;
+
+	ko.applyBindings({
+        people: 
+		[
+			{ firstName: "Button", code: '<input type="button" value="Button" onclick="customFunction()"><br>' },
+			{ firstName: "Input", code: '  First name:<br><input type="text" name="firstname"><br>' },
+			{ firstName: "InputX", code: ' Test name:<br><textarea name="message" rows="10" cols="30"></textarea><br><br>' },
+			{ firstName: "Check", code: ' <input type="radio" name="gender" value="female"> Female<br>' },
+			{ firstName: "CheckX", code: '<input type="radio" name="gender" value="male" checked> Male<br>' },
+			{ firstName: "Multi", code: '<select name="cars"><option value="volvo">Volvo</option><option value="saab">Saab</option><option value="fiat">Fiat</option><option value="audi">Audi</option></select><br>' }
+        ]
+    });
+   
+	
+	self.test1 = function()
+	{
+		alert('The first element is ');
+	};
+	
+};
+  
+ko.applyBindings(new ViewModel());
+
+</script>
+
+</body>
+</html>
