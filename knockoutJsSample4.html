@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+
+<style>
+</style>
+
+</head>
+
+<body>
+    
+    
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Nr</th>
+         </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th><input data-bind="value: accountName" /></th>
+            <th><input data-bind="value: accountNumber" /></th>
+        </tr>
+    </tbody>
+</table>
+
+ <P><span data-bind="text: fullName"> </span></P>
+
+<input type="button" value="click" data-bind="click: $root.test" >
+ 
+<div id="added"></div>
+<script>
+// Here's my data model
+var ViewModel = function(first,second) 
+{
+    
+    this.accountName = ko.observable(first);
+    this.accountNumber = ko.observable(second);
+ 
+    this.fullName = ko.pureComputed(function() 
+    {
+        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
+        return this.accountName() + " " + this.accountNumber();
+    }, this);
+    
+    this.test = function()
+    {
+        var stuff = this.fullName();
+        $("#added").append(stuff + "<br>");
+    }
+};
+  
+ko.applyBindings(new ViewModel("planet","2323")); // This makes Knockout get
+</script>
+</body>
+
+</html>
