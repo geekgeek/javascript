@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+</style>
+    <script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+</head>
+
+<body>
+<h1>type in html code here</h1>
+    
+    <label id="theLength"></label><br>
+<input type="text" id="textbox1"><br>
+    <input type="button" value="add" onclick="myModule1.myeventmethods.btnFunc1()">
+    <input type="button" value="del" onclick="myModule1.myeventmethods.btnFunc2()">
+
+
+
+<div id="added">
+    
+</div>
+
+<script>
+var myModule1  = 
+{
+    mymodels:
+    {
+        data1:[]
+    },
+    
+    mymethods:
+    {
+        getDataLength:function()
+        {
+          var lengthData = myModule1.mymodels.data1.length;
+          
+          return lengthData;
+        },
+        
+        addToArr:function(x)
+        {
+            myModule1.mymodels.data1.push(x);
+        },
+        
+        delFromArr:function()
+        {
+            myModule1.mymodels.data1.pop();
+        },
+        
+        loopArr:function()
+        {
+            $("#added").text("");
+            
+            var myStringArray =  myModule1.mymodels.data1;
+            var arrayLength = myStringArray.length;
+            
+                for (var i = 0; i < arrayLength; i++) 
+                {
+                   $("#added").append("<br>"+myStringArray[i]);
+                     $("#theLength").text(i);
+                    
+                }
+        }
+        
+    },
+    
+    myeventmethods:
+    {
+        btnFunc1:function()
+        {
+            var txtbox = $("#textbox1").val();
+            
+            myModule1.mymethods.addToArr(txtbox);
+            
+            myModule1.mymethods.loopArr();
+        },
+        
+        btnFunc2:function()
+        {
+            
+            myModule1.mymethods.delFromArr();
+            
+            myModule1.mymethods.loopArr();
+        }
+    }
+}
+</script>
+</body>
+
+</html>
