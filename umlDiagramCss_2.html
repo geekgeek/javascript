@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+#class_container
+{
+background-color:yellow;
+width:300px;
+min-height:300px;
+margin-left:500px;
+margin-top:20px;
+border:2px solid black;
+}
+
+#class_top
+{
+    margin:10px;
+    min-heigth:200px;
+    width:300px;
+
+}
+
+#middle
+{
+    border:1px solid black;
+}
+
+#class_body
+{
+
+}
+
+#class_footer
+{
+
+}
+
+#controller1
+{
+background-color:black;
+
+    width:400px;
+    height:300px;
+    float:left;
+    color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="controller1">
+    <h3>Controller 1</h3>
+
+<table style="width:100%">
+  <tr>
+    <th>Control</th>
+    <th>Function</th> 
+  </tr>
+  <tr>
+    <td>Add var: </td>
+    <td><input type="text" id="textbox1"><input type="button" value="add" id="button1" onclick="addVar()"></td> 
+ 
+  </tr>
+  <tr>
+    <td>Add method:</td>
+    <td><input type="text" id="textbox2"><input type="button" value="add" id="button2" onclick="addMethod()"></td> 
+  </tr>
+</table>
+</div>
+ 
+<div id="class_container">
+    <div id="class_top">
+        class1
+    </div>
+    
+    <hr id="middle">
+    
+    <div id="class_body">
+        <ul id="theVars">
+            <li>var car;</li>
+            <li>var boat;</li>
+        </ul>
+    </div>
+    
+    <hr id="middle">
+    
+    <div id="class_footer">
+        <ul id="theMethods">
+            <li>getSpeed();</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+
+function addVar()
+{
+    var txtb1 = $("#textbox1").val();
+    
+   
+    $("#theVars").append("<li>"+txtb1+"</li>");
+}
+
+function addMethod()
+{
+    var txtb2 = $("#textbox2").val();
+    $("#theMethods").append("<li>"+txtb2+"</li>");
+}
+</script>
+</body>
+
+</html>
