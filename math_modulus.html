@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<h1>Modulus</h1>
+<h2>->type in 48 % 60</h2>
+<input type="text" id="textbox1">%
+<input type="text" id="textbox2"><br>
+
+<br>
+
+<input type="button" value="click me" onclick="test1()"><br>
+<input type="text" id="textbox3">
+<div id="output1"></div>
+
+<script>
+function test1()
+{
+    var txtb1 = $("#textbox1").val();
+    var txtb2 = $("#textbox2").val();
+    
+    var z = txtb1 % txtb2;
+    $("#textbox3").val(z);
+}
+</script>
+</body>
+
+</html>
