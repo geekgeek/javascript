@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+#red
+{
+    background-color:red;
+    color:white;
+    width:200px;
+    height:200px;
+
+}
+
+#blue
+{
+    background-color:blue;
+    color:white;
+    width:200px;
+    height:200px;
+
+
+}
+
+#green
+{
+    background-color:green;
+    color:white;
+    width:300px;
+    height:400px;
+    margin:0px;
+    position:absolute;
+    overflow:auto;
+    padding:30px;
+}
+</style>
+
+</head>
+
+<body>
+<h1>show/hide</h1>
+
+<input type="button" value="click" onclick="test1()">
+<hr>
+<div id="green">
+    
+<h1>    blue box</h1>
+    blue boxblue boxblue boxblue box
+    blue boxblue box<br>
+    blue boxblue box<br>
+    blue boxblue box<br>blue boxblue box<br>
+    blue boxblue box<br> 
+    <h1>    blue box</h1>
+    blue boxblue boxblue boxblue box
+    blue boxblue box<br>
+    blue boxblue box<br>
+    blue boxblue box<br>blue boxblue box<br>
+    blue boxblue box<br> 
+    <h1>    blue box</h1>
+    blue boxblue boxblue boxblue box
+    blue boxblue box<br>
+    blue boxblue box<br>
+    blue boxblue box<br>blue boxblue box<br>
+    blue boxblue box<br> 
+</div>
+
+<div id="red">
+    
+    blue box
+    
+
+</div>
+    <div id="blue">
+    
+    blue box
+    </div>
+
+
+
+    
+<script>
+function test1()
+{
+    $("#green").toggle("slow");
+}
+</script>
+</body>
+
+</html>
