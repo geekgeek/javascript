@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script> 
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+
+
+</head>
+
+<body>
+<h1>type in html code here</h1>
+<h3 class="notis2">Resultat på søkeord "Hordaland" gir 5 treff:</h3>
+           <main id="hackerlist">
+              <input class="search" /><br>
+  <span class="sort" data-sort="stilling">stilling</span>
+  <span class="sort" data-sort="firma">firma</span>
+  <span class="sort" data-sort="karakter">karakter</span>
+            <ul class="list"> 
+                    
+                <li><p class="stilling">Tømrer </p><p class="firma">Bergen kommune </p><p class="karakter">80/100</p><br>Great<br>&starf;&starf;&starf;&starf;&starf;&starf;&starf;&starf;</li><li><p class="stilling">Elektroniker </p><p class="firma">Texas Instruments </p><p class="karakter">70/100</p><br>Good<br>&starf;&starf;&starf;&starf;&starf;&starf;&starf;</li><li><p class="stilling">Kokk </p><p class="firma">Hotell Norge </p><p class="karakter">60/100</p><br>Good but could be better<br>&starf;&starf;&starf;&starf;&starf;&starf;</li><li><p class="stilling">Sjåfør </p><p class="firma">Peppes Pizza </p><p class="karakter">50/100</p><br>Middel<br>&starf;&starf;&starf;&starf;&starf;</li><li><p class="stilling">Budbil </p><p class="firma">ExpressLevering </p><p class="karakter">40/100</p><br>Bad ok<br>&starf;&starf;&starf;&starf;</li><li><p class="stilling">Kassemedarbeider </p><p class="firma">McDonalds </p><p class="karakter">30/100</p><br>Could have been worse but a little bad<br>&starf;&starf;&starf;</li>                    
+            </ul> 
+        </main>
+<script>
+var options = {
+  valueNames: ['stilling','firma', 'karakter']
+};
+
+var hackerList = new List('hackerlist', options);
+</script>
+</body>
+
+</html>
