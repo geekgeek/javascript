@@ -1,0 +1,74 @@
+<html>
+   <head>
+      <title>Grab all url variables and list them in array of javascript objects</title>
+   </head>
+   <body>
+      <h1>submitted form</h1>
+      <div id="grabUrl"></div>
+      <script>
+         window.onload = function() {
+           var theUrl = window.location.href;
+           console.log(theUrl);
+         
+           document.getElementById("grabUrl").innerHTML = theUrl;
+           
+           var splitted = theUrl.split("?");
+           console.log(splitted);
+           console.log(splitted[1]);
+         
+           var theData = splitted[1];
+           
+           var theData2 = theData.split("&");
+         
+           console.log(theData2);
+         
+         
+         var storageBox = [];
+         function dataUrlVar(name1,value1) 
+         {
+             this.name1 = name1;
+             this.value1 = value1;
+             storageBox.push(this);
+         }
+         
+         
+         
+         for(var i = 0; i < theData2.length;i++)
+         {
+         var splittedInfo = theData2[i].split("=");
+         
+         new dataUrlVar(splittedInfo[0],splittedInfo[1]);
+         
+         }
+         
+         console.log(storageBox);
+         
+         var myJsonString = JSON.stringify(storageBox);
+         
+         var json1 = JSON.parse(myJsonString);
+         
+         
+         
+         var val1 = json1[0].name1;
+         var val2 = json1[0].value1;
+         
+         var val3 = json1[1].name1;
+         var val4 = json1[1].value1;
+         
+         
+         console.log(val1 + val2);
+         console.log(val3 + val4);
+          
+          //loop all url variables
+          for(var z = 0; z < json1.length; z++)
+          {
+            console.log(json1[z].name1);
+
+            console.log(json1[z].value1);
+          }
+         };
+         
+      </script>
+   </body>
+</html>
+
