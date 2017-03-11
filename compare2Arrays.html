@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<button onclick="btnClick1()">click</button>
+<script> 
+var x = [1,2,3,4];
+
+var y = [1,2,3,3];
+
+function btnClick1()
+{
+    compareArrays(x,y);
+}
+
+//Check if array values are the same
+function compareArrays(x,y)
+{
+
+    var areSimilar = true;
+    
+    for(var i = 0;i < x.length;i++)
+    {
+        if(x[i] != y[i])
+        {
+            areSimilar = false;
+        }
+    }
+    
+    alert(areSimilar);
+}
+
+</script>
+</body>
+
+</html>
