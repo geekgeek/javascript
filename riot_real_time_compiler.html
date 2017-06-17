@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+        <title>Riot JS Tag Compiler</title>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+        #editor 
+        { 
+
+            padding: 10px;
+            width: 50%;
+            box-sizing: border-box;
+            border: none;
+            min-width: 300px;
+            margin-bottom: 10px;
+            height: 500px;
+            background: #F9F9F9;
+            float:left;
+            overflow:scroll; 
+        }
+
+        .added
+        {
+
+          padding: 10px;
+          width: 50%;
+          box-sizing: border-box;
+          border: none;
+          min-width: 300px;
+          margin-bottom: 10px;
+          height: 500px;
+          background: #F9F9F9;
+          overflow:scroll; 
+        }
+        h1 {
+        color:white;
+        background: #FF0044;
+        padding:20px;
+        }
+    </style>
+    </head>
+    <body>
+    <h1>Riot JS Tag Compiler</h1>
+    <div id="editor" class="mainBox"></div>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
+    
+    <script>
+    var editor = ace.edit("editor");
+
+    editor.getSession().setMode("ace/mode/html");
+    
+    document.getElementById('editor').style.fontSize="16px";
+
+    //When typing in ace editor
+    editor.getSession().on('change', function(e) 
+    {   
+        for(var x = 0; x < 2;x++)
+            {
+                if( x === 0)
+                    {
+                        var myNode = document.getElementById("addedId");
+                        while (myNode.firstChild) 
+                        {
+                            myNode.removeChild(myNode.firstChild);
+                        }
+                    }
+                if(x === 1)
+                    {
+                        var box1 = editor.getValue();
+                        var compiledTag = riot.compile(box1);
+                        var content = document.createTextNode(compiledTag);
+                        document.getElementById("addedId").appendChild(content);
+                    }
+            }
+    });
+    </script>
+    <div class="added" id="addedId"></div>
+    </body>
+</html>
