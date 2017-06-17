@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>game</title>
+        <meta charset="utf-8">
+		<style>
+		#world
+		{
+			border:1px solid black;
+			width:1000px;
+			height:500px;
+			background-color:green;
+		}
+		#bang
+		{
+			position:absolute;
+		}
+				#myCanvas
+		{
+			position:absolute;
+		}
+		</style>
+
+	</head>
+	<body>
+			<div id="world">
+			  <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;background-color:black">
+				</canvas> 
+
+			</div>
+			<hr>
+						<ul>
+			<li>leftArrow = 37</li>
+			<li>rightArrow = 39</li>
+			<li>downArrow = 40</li>
+			<li>upArrow = 38</li>
+			<li>space =	32	</li>
+			<li>escape = 27	</li>
+			</ul>
+        <script>
+			
+		var leftArrowKey = 37;
+		var rightArrowKey = 39;
+		var downArrowKey = 40;
+		var upArrowKey = 38;
+		var spaceKey =	32;
+		var escapeKey = 27;
+					
+		var xthePosition = 0;
+		var ythePosition = 0;
+			
+
+
+		document.body.onkeydown=function(e)
+		{
+
+			   var keyCode = (window.event) ? event.keyCode : e.which;
+					
+			   if(keyCode==rightArrowKey)
+			   {
+						if(xthePosition < 800)
+						{
+							xthePosition += 20;
+							document.getElementById("myCanvas").style.marginLeft = xthePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==leftArrowKey)
+			   {
+						if(xthePosition > 0)
+						{
+							xthePosition -= 20;
+							document.getElementById("myCanvas").style.marginLeft = xthePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==downArrowKey)
+			   {
+						if(ythePosition < 400)
+						{
+							ythePosition += 20;
+							document.getElementById("myCanvas").style.marginTop = ythePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==upArrowKey)
+			   {
+						if(ythePosition > 0)
+						{
+							ythePosition -= 20;
+							document.getElementById("myCanvas").style.marginTop = ythePosition+"px";
+						}
+			   }
+			   else if(keyCode==spaceKey)
+			   {
+					var theText = document.createElement("p");
+					theText.appendChild(document.createTextNode("bang"));
+					theText.id = "bang";
+					document.getElementById("world").appendChild(theText);
+		
+			   }
+			   else if(keyCode==escapeKey)
+			   {
+					var theText = document.createElement("p");
+					theText.appendChild(document.createTextNode("endgame"));
+					theText.id = "endgame";
+					document.getElementById("world").appendChild(theText);
+		
+			   }
+			   else
+			   {
+			   }
+			   
+		};
+				
+				function myFunction()
+				{
+					console.log("helo");
+				}
+    
+/**
+get key pressed
+document.body.onkeyup=function(e){
+       var keyCode = (window.event) ? event.keyCode : e.which;     
+       if(keyCode==13)
+       {
+           return false;
+       }
+       else
+       {
+           alert(keyCode);
+           // do something...
+       }
+    };
+    
+    **/
+        </script>
+
+    </body>
+</html>
