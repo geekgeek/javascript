@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>game</title>
+        <meta charset="utf-8">
+		<style>
+		#world
+		{
+			border:1px solid black;
+			width:1000px;
+			height:500px;
+			background-color:green;
+		}
+		#bang
+		{
+			position:absolute;
+		}
+				#myCanvas
+		{
+			position:absolute;
+		}
+        #box1{
+            margin-left: 900px;
+            position:absolute;
+        }
+		</style>
+        
+        <style>
+        
+        </style>
+
+	</head>
+	<body>
+			<div id="world">
+                <canvas id="box1" width="100" height="100" style="border:1px solid #60a37f;background-color:rgba(39, 65, 64, 0.99)"></canvas>
+			  
+                <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;background-color:black">
+				</canvas> 
+
+			</div>
+			<hr>
+
+        <div id="stats">
+        <p>stats</p>
+        </div>
+        <script>
+			
+        var pressedButtons = 
+        {
+            leftArrowKey:37,
+            rightArrowKey:39,
+            downArrowKey:40,
+            upArrowKey:38,
+            spaceKey:32,
+            escapeKey:27
+        }    
+					
+		var xthePosition = 0;
+		var ythePosition = 0;
+
+		document.body.onkeyup=function(e)
+		{
+            mainGame(e);
+			   
+		};
+            
+        document.body.onkeydown=function(e)
+		{
+
+           mainGame(e);
+		};
+   
+
+
+
+            
+    function mainGame(e)
+    {
+        
+               var keyCode = (window.event) ? event.keyCode : e.which;
+					
+			   if(keyCode==pressedButtons.rightArrowKey)
+			   {
+						if(xthePosition < 800)
+						{
+							xthePosition += 20;
+
+                           document.getElementById("myCanvas").style.marginLeft = xthePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==pressedButtons.leftArrowKey)
+			   {
+						if(xthePosition > 0)
+						{
+							xthePosition -= 20;
+							document.getElementById("myCanvas").style.marginLeft = xthePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==pressedButtons.downArrowKey)
+			   {
+						if(ythePosition < 400)
+						{
+							ythePosition += 20;
+							document.getElementById("myCanvas").style.marginTop = ythePosition+"px";
+							
+						}
+			   }
+			   else if(keyCode==pressedButtons.upArrowKey)
+			   {
+						if(ythePosition > 0)
+						{
+							ythePosition -= 20;
+							document.getElementById("myCanvas").style.marginTop = ythePosition+"px";
+						}
+			   }
+			   else if(keyCode==pressedButtons.spaceKey)
+			   {
+					var theText = document.createElement("p");
+					theText.appendChild(document.createTextNode("bang"));
+					theText.id = "bang";
+					document.getElementById("world").appendChild(theText);
+		
+			   }
+			   else if(keyCode==pressedButtons.escapeKey)
+			   {
+					var theText = document.createElement("p");
+					theText.appendChild(document.createTextNode("endgame"));
+					theText.id = "endgame";
+					document.getElementById("world").appendChild(theText);
+		
+			   }
+			   else
+			   {
+			   }
+        
+
+    }
+            
+    //click box  
+    document.getElementById("box1").onclick = function()
+    {
+        
+        var theMonster = document.createElement("canvas");
+        theMonster.style.width = "100px";
+        theMonster.style.height = "100px";
+        theMonster.style.position = "absolute";
+        theMonster.style.backgroundColor = "red";
+        theMonster.style.border = "1px solid black";
+        theMonster.id ="monster1";
+        document.getElementById("world").appendChild(theMonster);
+    }
+            
+
+    //play song
+    function gameSong()
+    {
+        var audio = new Audio('song/bensound-epic.mp3');
+        audio.play();
+    }
+
+    /**
+     *
+     *console log key pressed
+     **/
+    function getKeyPressed()
+    {
+        document.body.onkeyup=function(e){
+           var keyCode = (window.event) ? event.keyCode : e.which;     
+            console.log(keyCode);
+        };
+    }
+
+
+
+
+    //tick tack
+    // Will execute myCallback every 0.5 seconds 
+    var intervalID = window.setInterval(myTimer, 500);
+
+    function myTimer() 
+    {
+        var marginLeft = document.getElementById("myCanvas").style["margin-left"];
+        var marginTop = document.getElementById("myCanvas").style["margin-top"];
+
+        var theStats ="marginTop " + marginTop + "<br> marginLeft: "+ marginLeft;
+        document.getElementById("stats").innerHTML = theStats;
+
+    }
+    
+    var monsterFactory = 
+    {
+        timerClock:60,
+        gameFinished:false,
+        xthePosition:0,
+        monsterMainWalk:function()
+        {
+            if(this.xthePosition < 1000)
+            {
+                this.xthePosition += 10;
+            }
+            document.getElementById("monster1").style.marginLeft = this.xthePosition+"px";
+            
+        },
+        startMonster:function()
+        {   
+            window.setInterval(this.monsterMainWalk,this.timerClock);
+        },
+        stopMonster:function()
+        {
+            window.clearInterval(this);
+        }
+    }
+    
+    var playerInfo = 
+    {
+        player_name:"player",
+        player_score:1000,
+        player_isDead:false,
+        player_funds:2000,
+        player_health:100
+        
+    }
+    
+    var monsterInfo = 
+    {
+        monster_name:"monster",
+        monster_isDead:false,
+        monster_attackDamage:20,
+        monster_damageSpeed:5,
+        monster_walkSpeed:10,
+        monster_health:100
+    }
+    //store all towers
+    var storageBunker = [];
+            
+    var smallTower = 
+    {
+        onCreation:storageBunker.push(this),
+        damage:100,
+        cost:20,
+        health:"cant die",
+        level:1,
+        levelUpgrades:
+        {
+            level1:0,
+            level2:30,
+            level3:70,
+            level4:200
+        }
+    };
+            
+            
+
+        </script>
+
+    </body>
+</html>
