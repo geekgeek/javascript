@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<h1>Pearson correlation</h1>
+<div id="output1"></div>
+<script>
+var pcorr = function(x, y) 
+{
+  var sumX = 0,
+    sumY = 0,
+    sumXY = 0,
+    sumX2 = 0,
+    sumY2 = 0;
+  var minLength = x.length = y.length = Math.min(x.length, y.length),
+    reduce = (xi, idx) => {
+      var yi = y[idx];
+      sumX += xi;
+      sumY += yi;
+      sumXY += xi * yi;
+      sumX2 += xi * xi;
+      sumY2 += yi * yi;
+    }
+  x.forEach(reduce);
+  return (minLength * sumXY - sumX * sumY) / Math.sqrt((minLength * sumX2 - sumX * sumX) * (minLength * sumY2 - sumY * sumY));
+};
+var x1 = pcorr([3, 4, 5, 2, 2], [4, 4, 4, 3, 3]);
+document.getElementById("output1").innerHTML= x1;
+</script>
+</body>
+
+</html>
