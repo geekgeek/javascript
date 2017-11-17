@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+      <meta charset="utf-8">
+      <title>MyTitle</title>
+      <style>
+      </style>
+   </head>
+   <body>
+      <div class="row">
+         <div class="col s12 m12">
+            <nav>
+               <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo" id="brandLogo"></a>
+                  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                  <ul class="right hide-on-med-and-down" id="addToNavigation1">
+                  </ul>
+                  <ul class="side-nav" id="mobile-demo">
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <div class="container">
+         <!-- JUMBOTRON-->
+         <div class="row">
+            <div class="col s12 m12">
+               <div class="card-panel">
+                  <span class="black-text text-darken-1" id="mainContentHolder">
+                  </span>
+               </div>
+            </div>
+         </div>
+         <!-- Content-->
+         <div class="row" id="vcardHolder">
+         </div>
+      </div>
+      <!--Container end-->
+      <!--footer -->
+      <footer class="page-footer">
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12" id="footerContent">
+               </div>
+               <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul id="footerLinks">
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="footer-copyright">
+            <div class="container" id="copyrightFooter">
+               © 2014 Copyright Text
+               <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+         </div>
+      </footer>
+      <script>
+         //Start first:
+         document.addEventListener("DOMContentLoaded", function(event) 
+         { 
+            $('.button-collapse').sideNav();
+             
+             pageContent.mainAddAll();
+         
+         });
+                 
+         var pageContent = 
+         {
+             navigation:
+             [
+                 {
+                     linkURL:"web1.com",
+                     linkName:"home"
+                 },
+                 {
+                     linkURL:"web2.com",
+                     linkName:"about"
+                 }
+             ],
+             mainContent:
+             {
+                 logoName:"website.com",
+                 heading:"Hell On Wheels",
+                 textcontent:"Hell on Wheels, som er basert på virkelige historiske hendelser, tar seerne med tilbake til tiden etter den amerikanske borgerkrigen, og utforsker gjenoppbyggingen av landet etter den blodigste krigen noensinne på amerikansk jord. Serien tar for seg jernbanens etablerte grådighet og korrupsjon, immigrasjon, den vanskelige s ..  "
+             },
+             vCards:
+             [
+                 {
+                     imageURL:"http://materializecss.com/images/sample-1.jpg",
+                     maincontent:"I am a very simple card 1"
+                 },
+                 {
+                     imageURL:"http://materializecss.com/images/sample-1.jpg",
+                     maincontent:"I am a very simple card 2"
+                 }
+             ],
+             footer:
+             {   footerContent:
+                 {
+                     footerHeading:"Footer Content",
+                     footerText:"You can use rows and columns here to organize your footer content."
+                 },
+                 footerLinks:
+                 [
+                     {
+                         linkURL:"web1.com",
+                         linkName:"link1"
+                     },
+                     {
+                         linkURL:"web2.com",
+                         linkName:"link2"
+                     }
+                 ],
+                 copyright:
+                 {
+                     year:2014,
+                     company:"overlord.web"
+                 }
+             },
+             addLogo:function()
+             {
+               var mainContentDiv = "brandLogo";
+               document.getElementById(mainContentDiv).innerHTML = this.mainContent.logoName;
+             },
+             addNavigation:function()
+             {
+                 var toBeReturned = "";
+                 var mainContentDiv1 = "addToNavigation1";
+                 var mainContentDiv2 = "mobile-demo";
+                 
+                 for(var i =0;i < this.navigation.length;i++)
+                 {
+                  var first1 = "<li><a href="+this.navigation[i].linkURL+">"+this.navigation[i].linkName+"</a></li>";
+                     toBeReturned += first1;
+                 }
+                 
+                 document.getElementById(mainContentDiv1).innerHTML = toBeReturned;
+                 document.getElementById(mainContentDiv2).innerHTML = toBeReturned;
+             },    
+             addFooterLinks:function()
+             {
+                 var toBeReturned = "";
+                 var mainContentDiv1 = "footerLinks";
+                 
+                 for(var i =0;i < this.footer.footerLinks.length;i++)
+                 {
+                  var first1 = "<li><a class=\"grey-text text-lighten-3\" href="+this.footer.footerLinks[i].linkURL+">"+this.footer.footerLinks[i].linkName+"</a></li>";
+                     toBeReturned += first1;
+                 }        
+                 document.getElementById(mainContentDiv1).innerHTML = toBeReturned;
+         
+             },
+             addFooterContent:function()
+             {
+               var mainContentDiv = "footerContent";
+               document.getElementById(mainContentDiv).innerHTML = "<h5 class=\"white-text\">"+this.footer.footerContent.footerHeading+"</h5>" +"<p class=\"grey-text text-lighten-4\">"+this.footer.footerContent.footerText+"</p>";
+             },
+             addJumbotronContent:function()
+             {
+                 var mainContentDiv = "mainContentHolder";
+                 
+                 var toBeReturned = "<h1>"+this.mainContent.heading+"</h1>";
+                 toBeReturned += "<span>" + this.mainContent.textcontent + "</span>";
+                 
+                 document.getElementById(mainContentDiv).innerHTML = toBeReturned;
+             },
+             addVCardContent:function()
+             {
+                 var toBeReturned = "";
+                 var mainContentDiv = "vcardHolder";
+                 for(var i =0;i < this.vCards.length;i++)
+                 {
+                  var first1 = "<div class=\"col s12 m12\"><div class=\"card horizontal\"><div class=\"card-image\"><img src=\""+this.vCards[i].imageURL+"\" style=\"width:194px;\"></div><div class=\"card-stacked\"><div class=\"card-content\"><p>"+this.vCards[i].maincontent+"</p></div></div></div></div>";
+                     toBeReturned += first1;
+                 }
+                 document.getElementById(mainContentDiv).innerHTML = toBeReturned;http://materializecss.com/getting-started.html
+             },
+             mainAddAll:function()
+             {
+                 this.addLogo();
+                 this.addJumbotronContent();
+                 this.addVCardContent();
+                 this.addNavigation();
+                 this.addFooterLinks();
+                 this.addFooterContent();
+             }
+         };
+                     
+             
+      </script>
+   </body>
+</html>
+
