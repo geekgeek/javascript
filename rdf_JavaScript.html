@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+    <title>MyTitle</title>
+
+    <style>
+
+    </style>
+
+    </head>
+
+    <body>
+        <h1>Example of  JavaScript data storage that is similar to RDF</h1>
+
+<script>
+
+//OBJECT STORAGE LOCATION CREATION
+var rdfstore = new Object();
+
+//OBJECT CREATION    
+rdfstore.schema = new Object();
+
+rdfstore.toyotayaris = new Object();
+rdfstore.toyotacorolla = new Object();
+rdfstore.factory = new Object();
+rdfstore.tokyo = new Object();
+rdfstore.japan = new Object();
+rdfstore.company = new Object();
+
+//INDIVIDUALS
+//#################################################################################
+    
+//individual schema
+rdfstore.schema.Car = "http://schema.org/Car";
+rdfstore.schema.Organization = "http://schema.org/manufacturer";
+rdfstore.schema.Corporation = "http://schema.org/Corporation";
+rdfstore.schema.Place = "http://schema.org/Place";
+
+//individual toyotayaris
+rdfstore.toyotayaris.typeOf = rdfstore.schema.Car;
+rdfstore.toyotayaris.name = "toyota yaris";
+rdfstore.toyotayaris.modelDate = 2003;
+
+//individual toyotacorolla
+rdfstore.toyotacorolla.typeOfEntity = rdfstore.schema.Car;
+rdfstore.toyotacorolla.name = "toyota corolla";
+rdfstore.toyotacorolla.modelDate = 2014;
+
+//individual factory
+rdfstore.factory.typeOf = rdfstore.schema.Organization;
+rdfstore.factory.name ="toyota main factory";
+rdfstore.factory.manufacturer = [rdfstore.toyotayaris,rdfstore.toyotacorolla]
+
+//individual tokyo
+rdfstore.tokyo.typeOf = rdfstore.schema.Place;
+rdfstore.tokyo.name = "tokyo";
+rdfstore.tokyo.containedInPlace = rdfstore.japan;
+
+//individual japan
+rdfstore.japan.typeOf = rdfstore.schema.Place;
+rdfstore.japan.name = "Japan";
+
+//individual company
+rdfstore.company.typeOf = rdfstore.schema.Corporation;
+rdfstore.company.name = "Toyota global corporation Japan";
+rdfstore.company.numberOfEmployees = 2300;
+rdfstore.company.location = rdfstore.tokyo;
+
+
+</script>
+
+    </body>
+
+</html>
