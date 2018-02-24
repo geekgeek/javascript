@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  </head>
+  <body>
+  
+      <h1>
+	      recursion sample 1 
+      </h1>
+
+<script>
+
+//#################################################
+//#################################################
+//#################################################
+//#################################################
+//#################################################
+//Algorithm bubble sort
+
+/**
+ *
+ * algorithm bubble sort.
+ * return true, if array needs to be shifted
+ * x = array position in loop
+ *
+ **/
+function isNextValueBigger(x)
+{
+	var tempArr = [2,3,4,10,8,6];
+
+	var firstValue = tempArr[x];
+	var secondValue = tempArr[x+1];
+	var mrz = firstValue > secondValue;
+
+	console.log(firstValue + " > " + secondValue);
+	console.log(mrz);
+
+	return mrz;
+}
+
+
+//isNextValueBiggerOriginal(0,[4,3,4,5,6]);
+/**
+ *
+ * algorithm bubble sort.
+ * return true, if array needs to be shifted
+ * x = array position in loop
+ * tempArr = the array to sort
+ **/
+function isNextValueBiggerOriginal(x,tempArr)
+{
+	var firstValue = tempArr[x];
+	var secondValue = tempArr[x+1];
+	var mrz = firstValue > secondValue;
+
+	//console.log(firstValue + " > " + secondValue);
+	//console.log(mrz);
+
+	return mrz;
+}
+
+/**
+ *
+ *
+ * sorts the array with bubble sort algorithm
+ *
+ *
+ * @param theArray to be bubble sorted
+ * @return sorted array
+ **/
+function bubbleSortFinal(tempArr)
+{
+    tempArr;
+
+    var finalArr = [];
+
+    var isSorted = false;
+    
+    var totalSteps = 0;
+    
+    var ticktack;
+    
+    while(isSorted === false)
+    {
+        totalSteps = totalSteps + 1;
+        ticktack = 0;
+
+        for(var i = 0; i < tempArr.length;i++)
+        {
+
+            if(isNextValueBiggerOriginal(i,tempArr) === true)
+            {
+                var tempShift1 = tempArr[i];
+                var tempShift2 = tempArr[i+1];
+
+                finalArr[i+1] = tempShift1;
+                finalArr[i] = tempShift2;
+
+                tempArr[i] = tempShift2;
+                tempArr[i+1] = tempShift1;
+
+                ticktack = ticktack + 1;
+
+            }
+            else
+            {
+                finalArr[i] = tempArr[i];
+            }
+
+        }
+        if(ticktack === 0)
+        {
+            isSorted = true;
+        }
+    }
+    
+    console.log("steps for sort : " + totalSteps);
+    
+    return finalArr;
+}
+
+
+
+//#################################################
+//#################################################
+//#################################################
+//#################################################
+//#################################################
+//Recursion
+
+
+/**
+ *
+ * 
+ * random recursion sample
+ *
+ *
+ **/
+function testRecur1(x)
+      {
+        
+        console.log("current x value is: " + x);
+          
+        //finished condition
+        if(x == 10)
+        {
+            console.log("finished " + x);
+        }
+        else if(x > 10)
+        {
+            console.log("finished x is to large " + x);
+        }
+        else
+        {
+            console.log(x);
+            x++;
+            testRecur(x);
+
+        }
+      }
+
+</script>
+
+
+  </body>
+</html>
