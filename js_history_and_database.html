@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>MyTitle</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+    <input id="textbox1">
+    <button onclick="add_val()">add val</button>
+    <button onclick="redo()">redo</button>
+<div id="app">
+    
+
+</div>
+
+<script>
+
+database = 
+{
+    storage_var:[],
+    storage_var_history:[],
+    storage_var_history_future:[]
+    
+}
+
+function add_val()
+{
+    txtb1 = document.getElementById("textbox1").value;
+    
+    database.storage_var.push(txtb1);
+    
+    //add value to history
+    database.storage_var_history.push(database.storage_var.slice(0));
+    
+    
+    view_update();
+}
+
+function update_database()
+{
+    console.log(database.storage_var_history);
+}
+
+function view_update()
+{
+    storage_var = "";
+    for(var i = 0;i < database.storage_var.length;i++)
+    {
+        storage_var += database.storage_var[i] + "<br>";
+    }
+    document.getElementById("app").innerHTML = storage_var;
+}
+
+//redo function
+function redo()
+{
+    //add last value to future
+    
+    //update view
+    
+    //add to future history
+    last_element = database.storage_var_history[database.storage_var_history.length-1];
+    database.storage_var_history_future.push(last_element);
+    console.log(database.storage_var_history_future);
+    
+    //remove current history
+    database.storage_var_history.pop();
+    database.storage_var = last_element;
+    console.log(database.storage_var_history);
+    
+    //view update
+    view_update()
+    
+}
+
+</script>
+</body>
+
+</html>
