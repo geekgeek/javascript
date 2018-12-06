@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		 <meta charset="UTF-8"> 
+		<title>MyTitle</title>
+
+	</head>
+
+	<body>
+		<h1>get api</h1>&larr;
+		<h1>app</h1>
+		<div id="app"></div>
+		
+		<script>
+
+	function readBody(xhr) {
+		var data;
+		if (!xhr.responseType || xhr.responseType === "text") {
+			data = xhr.responseText;
+		} else if (xhr.responseType === "document") {
+			data = xhr.responseXML;
+		} else {
+			data = xhr.response;
+		}
+		return data;
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		storegevar = "";
+		
+		if (xhr.readyState == 4) {
+			var htmlContent = "";
+			
+			//document.getElementById("app").innerHTML += readBody(xhr);
+			storegevar = JSON.parse(readBody(xhr));
+			
+			document.getElementById("app").innerHTML += storegevar;
+			
+			//console.log(readBody(xhr));
+		}
+		
+
+		console.log(storegevar);
+	}
+xhr.open('GET', 'http://url', true);
+xhr.send(null); 
+
+		
+		</script>
+	</body>
+
+</html>
