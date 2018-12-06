@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		 <meta charset="UTF-8"> 
+		<title>MyTitle</title>
+
+	</head>
+
+	<body>
+		<h1>get api</h1>&larr;
+
+		<script>
+
+		function get_api_data()
+		{
+			datastore = [];
+
+			fetch("url").then(function (response) {
+				return response.text();
+			} 
+			).then(function (html) {
+			  datastore.push(html);
+			}
+
+			);
+
+			return datastore
+		}
+		
+		
+
+			api_result = get_api_data();
+			
+			console.log(api_result)
+		
+		</script>
+	</body>
+
+</html>
