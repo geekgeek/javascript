@@ -19,12 +19,11 @@ class Api_grabber extends Component {
 	
 	  this.httpGetAsync = this.httpGetAsync.bind(this);
 	  this.callback = this.callback.bind(this);
-	  this.loadDoc = this.loadDoc.bind(this);
 	
   }
   	componentDidMount()
 	{
-		//this.httpGetAsync("http://data.ssb.no/api/v0/dataset/1120.json?lang=no", this.callback);
+		//this.httpGetAsync("http://data24324324.com", this.callback);
 		this.httpGetAsync(this.props.url, this.callback);
 
 
@@ -59,30 +58,6 @@ class Api_grabber extends Component {
 		xmlHttp.send(null);
 	}
 
-	loadDoc() {
-	  
-	  var xhttp = new XMLHttpRequest();
-	  
-	  
-	  xhttp.onreadystatechange = function() 
-	  {
-		  
-		  
-		if (this.readyState === 4 && this.status === 200) 
-		{
-		  
-		  
-		  console.log(this.responseText);
-
-
-		}
-		
-	  };
-	  
-	  xhttp.open("GET", "http://data.ssb.no/api/v0/dataset/1120.json?lang=no", true);
-	  xhttp.send();
-	  
-	}
 
   render() {
     return (
