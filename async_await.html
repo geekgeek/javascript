@@ -34,7 +34,7 @@
   <script>
       
       //normal javascript
-      function httpGet(theUrl)
+      async function httpGet(theUrl)
       {
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
@@ -43,6 +43,22 @@
       }
 
       //promises
+      async function httpGetAsync(url)
+      { 
+        fetch(url).then(function(response) 
+        {
+            //console.log("number 1")//before
+            return response.text();
+          }).then(function(data) {
+            //console.log("number 2") //before
+            console.log(data);
+          }).catch(function() {
+            console.log("Booo");
+          });
+      }
+
+      //promises
+      /**
       async function httpGetAsync(url)
       { 
         fetch(url).then(function(response) 
@@ -61,25 +77,18 @@
           })
           ;
       }
+      **/
 
       //async await
       async function asyncawait()
       {
-          console.log("number 1");
-
           //write file
-          var first = await httpGet("writefile");
+          var first = await httpGetAsync("writefile");
           console.log(first);
 
-          console.log("number 2:write complete")
-
           //read file
-          var second = await httpGet("readfile");
-          console.log(second);
-          
-          console.log("number 3:read complete");
-
-
+          var third = await httpGetAsync("readfile");
+          console.log(third);
           
       }
   </script>
