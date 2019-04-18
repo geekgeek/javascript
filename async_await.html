@@ -59,22 +59,29 @@
 
       //promises
       /**
-      async function httpGetAsync(url)
+ async function httpGetAsync(url)
       { 
         fetch(url).then(function(response) 
         {
-             console.log("number 1")//before
             return response.text();
-          }).then(function(data) {
-            console.log("number 2") //before
-            console.log(data);
-          }).catch(function() {
-            console.log("Booo");
-          })
-          //after callback
-          .then(function() {
-            console.log("number 3");
-          })
+          }).then(function(data) {//nested promise 1
+            //console.log(data);
+            return data;
+          }).then(function(data)//nested promise 2
+             {
+                var line_array = data.split("\n");
+                  //console.log(line_array);
+
+                  var line_col = [];
+                  for(var i = 0;i < line_array.length;i++)
+                  {
+                      line_col.push(line_array[i].split(";"));
+
+                  }
+                    console.log(line_col);
+                  return line_col;
+                  
+            })
           ;
       }
       **/
